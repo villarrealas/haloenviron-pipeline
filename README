@@ -1,0 +1,4 @@
+Pipeline for the halo environment paper using halo-tools as the primary
+mechanism for calculation. This will be a substantial speed improvement
+and is being done as part of the debugging process in order to ensure
+robust measurements.
