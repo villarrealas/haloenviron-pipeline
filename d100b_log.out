@@ -1,0 +1,19 @@
+_RegisterApplication(), FAILED TO establish the default connection to the WindowServer, _CGSDefaultConnection() is NULL.
+/Users/villarreala/miniconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+
+...Processing ASCII data of file: 
+/Users/villarreala/PROJECTS/halotools/haloenviron-pipeline/l0125_d100b.catalog
+ 
+Total number of rows in detected data = 1982374
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 29.85 seconds
+
+
+78201
+Run Complete

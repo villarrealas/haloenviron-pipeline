@@ -9,7 +9,6 @@ fname = './l0125_d50b.catalog' # file name to z0.0.catalog
 mthresh = 1e11  # threshold mass in Msun/h
 gnewton = 4.302e-6
 lbox = 125.0
-vsub_min = 57
 
 # define dict pointing to all marks of interest
 rs_dict = {'halo_id':(0,'i8'), 'halo_mass':(2,'f8'), 'halo_vmax':(3,'f8'), 'halo_rvir':(5,'f8'),
@@ -21,10 +20,6 @@ reader = sm.TabularAsciiReader(fname, rs_dict, row_cut_min_dict={'halo_mass':mth
                                row_cut_eq_dict={'halo_pid':-1})
 hosts_data = reader.read_ascii()
 
-reader = sm.TabularAsciiReader(fname, rs_dist, row_cut_min_dict={'halo_vmax':vsub_min}, 
-                               row_cut_neq_dict={'halo_pid':-1})
-subs_data = reader.read_ascii()
-
 # add vratio mark
 vratio_temp = hosts_data['halo_vmax']/(np.sqrt(gnewton * hosts_data['halo_mass']/hosts_data['halo_rvir']))
 hosts_data['halo_vratio'] = vratio_temp
@@ -35,27 +30,27 @@ hosts_data['halo_cnfw'] = cnfw_temp
 mass_sort = np.sort(hosts_data, order='halo_mass')
 
 vratio_binned = stats.binned_statistic(np.log10(mass_sort['halo_mass']), 
-                                       np.log10(mass_sort['halo_vratio']),
+                                       (mass_sort['halo_vratio']),
                                        statistic='mean', bins=10)
-vratio_fix = np.log10(mass_sort['halo_vratio']) - vratio_binned.statistic[vratio_binned.binnumber-1]
+vratio_fix = (mass_sort['halo_vratio']) / vratio_binned.statistic[vratio_binned.binnumber-1]
 mass_sort['halo_vratio'] = vratio_fix
 
 cnfw_binned = stats.binned_statistic(np.log10(mass_sort['halo_mass']), 
-                                     np.log10(mass_sort['halo_cnfw']),
+                                     (mass_sort['halo_cnfw']),
                                      statistic = 'mean', bins=10)
-cnfw_fix = np.log10(mass_sort['halo_cnfw']) - cnfw_binned.statistic[cnfw_binned.binnumber-1]
+cnfw_fix = (mass_sort['halo_cnfw']) / cnfw_binned.statistic[cnfw_binned.binnumber-1]
 mass_sort['halo_cnfw'] = cnfw_fix
 
 shape_binned = stats.binned_statistic(np.log10(mass_sort['halo_mass']), 
-                                      np.log10(mass_sort['halo_ctoa']),
+                                      (mass_sort['halo_ctoa']),
                                       statistic='mean', bins=10)
-shape_fix = np.log10(mass_sort['halo_ctoa']) - shape_binned.statistic[shape_binned.binnumber-1]
+shape_fix = (mass_sort['halo_ctoa']) / shape_binned.statistic[shape_binned.binnumber-1]
 mass_sort['halo_ctoa'] = shape_fix
 
 spin_binned = stats.binned_statistic(np.log10(mass_sort['halo_mass']), 
                                      (mass_sort['halo_spin']),
                                      statistic='mean', bins=10)
-spin_fix = (mass_sort['halo_spin']) - spin_binned.statistic[spin_binned.binnumber-1]
+spin_fix = (mass_sort['halo_spin']) / spin_binned.statistic[spin_binned.binnumber-1]
 mass_sort['halo_spin'] = spin_fix
 
 # now all our marks have been fixed. First let's run through the marked correlation functions
@@ -92,7 +87,7 @@ mcfn_spin = (mcf_spin - np.mean(mass_sort['halo_spin'])**2)/(np.var(mass_sort['h
 
 # how we'll need to shuffle the marks N times, run the calculation N times,
 # and determine the min and max range of the mark calculation. So:
-nrand = 2
+nrand = 200
 mcf_vratio_rand = np.zeros((nstep, nrand))
 mcfn_vratio_rand = np.zeros((nstep, nrand))
 mcf_cnfw_rand = np.zeros((nstep, nrand))
@@ -164,7 +159,7 @@ yerr_high_low = xi_low + error_low
 yerr_low_high = np.maximum(1e-2, xi_high - error_high)
 yerr_high_high = xi_high + error_high
 
-np.savetxt('l0125_m1e11_d50b.dat', np.transpose([10**binmids, xi, xi_low, xi_high, mcfn_vratio, mcfn_vratio_min, 
+np.savetxt('l0125_m1e11_d50b_nolog.dat', np.transpose([10**binmids, xi, xi_low, xi_high, mcfn_vratio, mcfn_vratio_min, 
                                                   mcfn_vratio_max, mcfn_cnfw, mcfn_cnfw_min, mcfn_cnfw_max, mcfn_ctoa,
                                                   mcfn_ctoa_min, mcfn_ctoa_max, mcfn_spin, mcfn_spin_min, mcfn_spin_max]), 
 header='r xi xi_low xi_high mcfn_vratio +low +high mcfn_cnfw +low +high mcf_ctoa +low +high mcf_spin +low +high')
