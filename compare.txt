@@ -1,0 +1,44 @@
+12,15d11
+< vhost_min = 190.0
+< vrat_frac = 0.3
+< vsub_min = vhost_min * vrat_frac
+< nrand = 200
+27,30d22
+< reader = sm.TabularAsciiReader(fname, rs_dict, row_cut_min_dict={'halo_vmax':vsub_min}, 
+<                                row_cut_neq_dict={'halo_pid':-1})
+< subs_data = reader.read_ascii()
+< 
+41c33
+<                                        np.log10(mass_sort['halo_vratio']),
+---
+>                                        (mass_sort['halo_vratio']),
+43c35
+< vratio_fix = np.log10(mass_sort['halo_vratio']) - vratio_binned.statistic[vratio_binned.binnumber-1]
+---
+> vratio_fix = (mass_sort['halo_vratio']) / vratio_binned.statistic[vratio_binned.binnumber-1]
+47c39
+<                                      np.log10(mass_sort['halo_cnfw']),
+---
+>                                      (mass_sort['halo_cnfw']),
+49c41
+< cnfw_fix = np.log10(mass_sort['halo_cnfw']) - cnfw_binned.statistic[cnfw_binned.binnumber-1]
+---
+> cnfw_fix = (mass_sort['halo_cnfw']) / cnfw_binned.statistic[cnfw_binned.binnumber-1]
+53c45
+<                                       np.log10(mass_sort['halo_ctoa']),
+---
+>                                       (mass_sort['halo_ctoa']),
+55c47
+< shape_fix = np.log10(mass_sort['halo_ctoa']) - shape_binned.statistic[shape_binned.binnumber-1]
+---
+> shape_fix = (mass_sort['halo_ctoa']) / shape_binned.statistic[shape_binned.binnumber-1]
+61c53
+< spin_fix = (mass_sort['halo_spin']) - spin_binned.statistic[spin_binned.binnumber-1]
+---
+> spin_fix = (mass_sort['halo_spin']) / spin_binned.statistic[spin_binned.binnumber-1]
+97a90
+> nrand = 200
+169c162
+< np.savetxt('l0125_m1e11_d50b.dat', np.transpose([10**binmids, xi, xi_low, xi_high, mcfn_vratio, mcfn_vratio_min, 
+---
+> np.savetxt('l0250_m7e11_d200b_nolog.dat', np.transpose([10**binmids, xi, xi_low, xi_high, mcfn_vratio, mcfn_vratio_min, 

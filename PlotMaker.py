@@ -54,7 +54,7 @@ plt.ylabel(r'$(\xi_{\mathrm{high}} - \xi_{\mathrm{low}} ) / \xi_{\mathrm{all}}$'
 plt.title('L0500')
 plt.legend(loc='lower right', numpoints=1, prop={'size': 10})
 plt.tight_layout()
-plt.savefig('./FIGS/l0500_cfcompare_nolog.pdf')
+plt.savefig('./FIGS/l0500_cfcompare.pdf')
 plt.clf()
 
 font = {'family' : 'normal',
@@ -74,7 +74,7 @@ plt.ylabel(r'$(\xi_{\mathrm{high}} - \xi_{\mathrm{low}} ) / \xi_{\mathrm{all}}$'
 plt.title('L0250')
 plt.legend(loc='lower right', numpoints=1, prop={'size': 10})
 plt.tight_layout()
-plt.savefig('./FIGS/l0250_cfcompare_nolog.pdf')
+plt.savefig('./FIGS/l0250_cfcompare.pdf')
 plt.clf()
 
 font = {'family' : 'normal',
@@ -94,7 +94,7 @@ plt.ylabel(r'$(\xi_{\mathrm{high}} - \xi_{\mathrm{low}} ) / \xi_{\mathrm{all}}$'
 plt.title('L0125')
 plt.legend(loc='lower right', numpoints=1, prop={'size': 10})
 plt.tight_layout()
-plt.savefig('./FIGS/l0125_cfcompare_nolog.pdf')
+plt.savefig('./FIGS/l0125_cfcompare.pdf')
 plt.clf()
 
 font = {'family' : 'normal',
@@ -127,7 +127,7 @@ plt.xlabel(r'$r \ (h^{-1} \mathrm{Mpc})$')
 plt.ylabel(r'$\mathcal{M}_{c_{\mathrm{V}}}$')
 plt.title('L0500')
 plt.tight_layout()
-plt.savefig('./FIGS/l0500_mcf_cV_nolog.pdf')
+plt.savefig('./FIGS/l0500_mcf_cV.pdf')
 plt.clf()
 
 font = {'family' : 'normal',
@@ -160,7 +160,7 @@ plt.xlabel(r'$r \ (h^{-1} \mathrm{Mpc})$')
 plt.ylabel(r'$\mathcal{M}_{c_{\mathrm{V}}}$')
 plt.title('L0250')
 plt.tight_layout()
-plt.savefig('./FIGS/l0250_mcf_cV_nolog.pdf')
+plt.savefig('./FIGS/l0250_mcf_cV.pdf')
 plt.clf()
 
 matplotlib.rc('font', **font)
@@ -188,7 +188,7 @@ plt.xlabel(r'$r \ (h^{-1} \mathrm{Mpc})$')
 plt.ylabel(r'$\mathcal{M}_{c_{\mathrm{V}}}$')
 plt.title('L0125')
 plt.tight_layout()
-plt.savefig('./FIGS/l0125_mcf_cV_nolog.pdf')
+plt.savefig('./FIGS/l0125_mcf_cV.pdf')
 plt.clf()
 
 font = {'family' : 'normal',
@@ -220,7 +220,7 @@ plt.xlabel(r'$r \ (h^{-1} \mathrm{Mpc})$')
 plt.ylabel(r'$\mathcal{M}_{c_{\mathrm{NFW}}}$')
 plt.title('L0500')
 plt.tight_layout()
-plt.savefig('./FIGS/l0500_mcf_cNFW_nolog.pdf')
+plt.savefig('./FIGS/l0500_mcf_cNFW.pdf')
 plt.clf()
 
 font = {'family' : 'normal',
@@ -252,7 +252,7 @@ plt.xlabel(r'$r \ (h^{-1} \mathrm{Mpc})$')
 plt.ylabel(r'$\mathcal{M}_{c_{\mathrm{NFW}}}$')
 plt.title('L0250')
 plt.tight_layout()
-plt.savefig('./FIGS/l0250_mcf_cNFW_nolog.pdf')
+plt.savefig('./FIGS/l0250_mcf_cNFW.pdf')
 plt.clf()
 
 font = {'family' : 'normal',
@@ -284,7 +284,7 @@ plt.xlabel(r'$r \ (h^{-1} \mathrm{Mpc})$')
 plt.ylabel(r'$\mathcal{M}_{c_{\mathrm{NFW}}}$')
 plt.title('L0125')
 plt.tight_layout()
-plt.savefig('./FIGS/l0125_mcf_cNFW_nolog.pdf')
+plt.savefig('./FIGS/l0125_mcf_cNFW.pdf')
 plt.clf()
 
 font = {'family' : 'normal',
@@ -316,7 +316,7 @@ plt.xlabel(r'$r \ (h^{-1} \mathrm{Mpc})$')
 plt.ylabel(r'$\mathcal{M}_{\mathrm{shape}}$')
 plt.title('L0500')
 plt.tight_layout()
-plt.savefig('./FIGS/l0500_mcf_ctoa_nolog.pdf')
+plt.savefig('./FIGS/l0500_mcf_ctoa.pdf')
 plt.clf()
 
 font = {'family' : 'normal',
@@ -348,7 +348,7 @@ plt.xlabel(r'$r \ (h^{-1} \mathrm{Mpc})$')
 plt.ylabel(r'$\mathcal{M}_{\mathrm{shape}}$')
 plt.title('L0250')
 plt.tight_layout()
-plt.savefig('./FIGS/l0250_mcf_ctoa_nolog.pdf')
+plt.savefig('./FIGS/l0250_mcf_ctoa.pdf')
 plt.clf()
 
 font = {'family' : 'normal',
@@ -380,7 +380,7 @@ plt.xlabel(r'$r \ (h^{-1} \mathrm{Mpc})$')
 plt.ylabel(r'$\mathcal{M}_{\mathrm{shape}}$')
 plt.title('L0125')
 plt.tight_layout()
-plt.savefig('./FIGS/l0125_mcf_ctoa_nolog.pdf')
+plt.savefig('./FIGS/l0125_mcf_ctoa.pdf')
 plt.clf()
 
 font = {'family' : 'normal',
@@ -412,7 +412,7 @@ plt.xlabel(r'$r \ (h^{-1} \mathrm{Mpc})$')
 plt.ylabel(r'$\mathcal{M}_{\mathrm{spin}}$')
 plt.title('L0500')
 plt.tight_layout()
-plt.savefig('./FIGS/l0500_mcf_spin_nolog.pdf')
+plt.savefig('./FIGS/l0500_mcf_spin.pdf')
 plt.clf()
 
 
@@ -445,7 +445,7 @@ plt.xlabel(r'$r \ (h^{-1} \mathrm{Mpc})$')
 plt.ylabel(r'$\mathcal{M}_{\mathrm{spin}}$')
 plt.title('L0250')
 plt.tight_layout()
-plt.savefig('./FIGS/l0250_mcf_spin_nolog.pdf')
+plt.savefig('./FIGS/l0250_mcf_spin.pdf')
 plt.clf()
 
 font = {'family' : 'normal',
@@ -478,5 +478,103 @@ plt.xlabel(r'$r \ (h^{-1} \mathrm{Mpc})$')
 plt.ylabel(r'$\mathcal{M}_{\mathrm{spin}}$')
 plt.title('L0125')
 plt.tight_layout()
-plt.savefig('./FIGS/l0125_mcf_spin_nolog.pdf')
+plt.savefig('./FIGS/l0125_mcf_spin.pdf')
 plt.clf()
+
+font = {'family' : 'normal',
+        'weight' : 'normal',
+        'size'   : 16}
+
+matplotlib.rc('font', **font)
+
+plt.axhline(y=0, color='k', linestyle='--')
+plt.fill_between(l0500_d200[:,0], l0500_d200[:,17], l0500_d200[:,18], facecolor='b', edgecolor='k', alpha=0.1)
+plt.fill_between(l0500_d100[:,0], l0500_d100[:,17], l0500_d100[:,18], facecolor='r', edgecolor='k', alpha=0.1)
+plt.fill_between(l0500_d75[:,0], l0500_d75[:,17], l0500_d75[:,18], facecolor='c', edgecolor='k', alpha=0.1)
+plt.fill_between(l0500_d50[:,0], l0500_d50[:,17], l0500_d50[:,18], facecolor='g', edgecolor='k', alpha=0.1)
+
+plt.semilogx(l0500_d200[:,0], l0500_d200[:,16], 'b-', 
+             label='$\Delta = 200, M_{\odot}h^{-1} \geq 4e12$')
+plt.plot(l0500_d100[:,0], l0500_d100[:,16], 'r-', 
+             label='$\Delta = 100, M_{\odot}h^{-1} \geq 5e12$')
+plt.plot(l0500_d75[:,0], l0500_d75[:,16], 'c-', 
+             label='$\Delta = 75, M_{\odot}h^{-1} \geq 6e12$')
+plt.plot(l0500_d50[:,0], l0500_d50[:,16], 'g-', 
+             label='$\Delta = 50, M_{\odot}h^{-1} \geq 7e12$')
+
+plt.legend(loc='upper right', prop={'size': 8})
+
+plt.xlim(4,18)
+#plt.ylim(-0.02,0.06)
+plt.xlabel(r'$r \ (h^{-1} \mathrm{Mpc})$')
+plt.ylabel(r'$\mathcal{M}_{\mathrm{Nsat}}$')
+plt.title('L0500')
+plt.tight_layout()
+plt.savefig('./FIGS/l0500_mcf_nsat.pdf')
+plt.clf()
+
+font = {'family' : 'normal',
+        'weight' : 'normal',
+        'size'   : 16}
+
+matplotlib.rc('font', **font)
+
+plt.axhline(y=0, color='k', linestyle='--')
+plt.fill_between(l0250_d200[:,0], l0250_d200[:,17], l0250_d200[:,18], facecolor='b', edgecolor='k', alpha=0.1)
+plt.fill_between(l0250_d100[:,0], l0250_d100[:,17], l0250_d100[:,18], facecolor='r', edgecolor='k', alpha=0.1)
+plt.fill_between(l0250_d75[:,0], l0250_d75[:,17], l0250_d75[:,18], facecolor='c', edgecolor='k', alpha=0.1)
+plt.fill_between(l0250_d50[:,0], l0250_d50[:,17], l0250_d50[:,18], facecolor='g', edgecolor='k', alpha=0.1)
+
+plt.semilogx(l0250_d200[:,0], l0250_d200[:,16], 'b-', 
+             label='$\Delta = 200, M_{\odot}h^{-1} \geq 7e11$')
+plt.plot(l0250_d100[:,0], l0250_d100[:,16], 'r-', 
+             label='$\Delta = 100, M_{\odot}h^{-1} \geq 8e11$')
+plt.plot(l0250_d75[:,0], l0250_d75[:,16], 'c-', 
+             label='$\Delta = 75, M_{\odot}h^{-1} \geq 9e11$')
+plt.plot(l0250_d50[:,0], l0250_d50[:,16], 'g-', 
+             label='$\Delta = 50, M_{\odot}h^{-1} \geq 1.5e12$')
+
+plt.legend(loc='upper right', prop={'size': 8})
+
+plt.xlim(4,18)
+#plt.ylim(-0.02,0.06)
+plt.xlabel(r'$r \ (h^{-1} \mathrm{Mpc})$')
+plt.ylabel(r'$\mathcal{M}_{\mathrm{Nsat}}$')
+plt.title('L0250')
+plt.tight_layout()
+plt.savefig('./FIGS/l0250_mcf_nsat.pdf')
+plt.clf()
+
+font = {'family' : 'normal',
+        'weight' : 'normal',
+        'size'   : 16}
+
+matplotlib.rc('font', **font)
+
+plt.axhline(y=0, color='k', linestyle='--')
+plt.fill_between(l0125_d200[:,0], l0125_d200[:,17], l0125_d200[:,18], facecolor='b', edgecolor='k', alpha=0.1)
+plt.fill_between(l0125_d100[:,0], l0125_d100[:,17], l0125_d100[:,18], facecolor='r', edgecolor='k', alpha=0.1)
+plt.fill_between(l0125_d75[:,0], l0125_d75[:,17], l0125_d75[:,18], facecolor='c', edgecolor='k', alpha=0.1)
+plt.fill_between(l0125_d50[:,0], l0125_d50[:,17], l0125_d50[:,18], facecolor='g', edgecolor='k', alpha=0.1)
+
+plt.semilogx(l0125_d200[:,0], l0125_d200[:,16], 'b-', 
+             label='$\Delta = 200, M_{\odot}h^{-1} \geq 7e10$')
+plt.plot(l0125_d100[:,0], l0125_d100[:,16], 'r-', 
+             label='$\Delta = 100, M_{\odot}h^{-1} \geq 8e10$')
+plt.plot(l0125_d75[:,0], l0125_d75[:,16], 'c-', 
+             label='$\Delta = 75, M_{\odot}h^{-1} \geq 9e10$')
+plt.plot(l0125_d50[:,0], l0125_d50[:,16], 'g-', 
+             label='$\Delta = 50, M_{\odot}h^{-1} \geq 1e11$')
+
+plt.legend(loc='upper right', prop={'size': 8})
+
+plt.xlim(4,18)
+#plt.ylim(-0.02,0.06)
+plt.xlabel(r'$r \ (h^{-1} \mathrm{Mpc})$')
+plt.ylabel(r'$\mathcal{M}_{\mathrm{Nsat}}$')
+plt.title('L0125')
+plt.tight_layout()
+plt.savefig('./FIGS/l0125_mcf_nsat.pdf')
+plt.clf()
+
+
