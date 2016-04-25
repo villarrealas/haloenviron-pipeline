@@ -6,16 +6,20 @@ import scipy.stats as stats
 import halotools.mock_observables as mo
 import halotools.sim_manager as sm
 
-lbox=250
-delta=200
-mthresh=7e11
+lbox=125       # size of simulation box
+delta=10      # overdensity parameter
+mthresh=2e11   # mass threshold
+
+#file name settings based on a bove
 fname = './l0'+str(lbox)+'_d'+str(delta)+'b.catalog'
-outname = './l0'+str(lbox)+'_m'+str(mthresh).replace("+","") +'_d'+str(delta)+'b_nolog_test.dat'
-gnewton = 4.302e-6
-vhost_min = 240.0
-vrat_frac = 0.3
-vsub_min = vhost_min * vrat_frac
-nrand = 10
+outname = './l0'+str(lbox)+'_m'+str(mthresh).replace("+","") +'_d'+str(delta)+'b_nolog.dat'
+gnewton = 4.302e-6   # for quick conversion
+vhost_min = 240.0    # minimum vmax for host in satellite counting
+vrat_frac = 0.3      # minimum vsub/vhost for satellite counting
+vsub_min = vhost_min * vrat_frac # resulting minimum vsub for catalog pruning
+nrand = 200          # number of randomizations for error bars
+nstep = 10           # number of bins for correlation functions
+Nsub = np.array([2,2,2]) # number of octants for jackknife errors
 
 # define dict pointing to all marks of interest
 rs_dict = {'halo_id':(0,'i8'), 'halo_mass':(2,'f8'), 'halo_vmax':(3,'f8'), 'halo_rvir':(5,'f8'),
@@ -88,35 +92,41 @@ mass_sort['halo_spin'] = spin_fix
 pos = np.vstack((mass_sort['halo_x'], mass_sort['halo_y'], mass_sort['halo_z'])).T
 
 minlog = np.log10(3.0)
-maxlog = np.log10(30.0)
-nstep = 30
-steplog = (maxlog - minlog) / (nstep - 1.)
-logbins = np.arange(minlog, maxlog+steplog, steplog)
-binmids = np.zeros(30)
+maxlog = np.log10(20.0)
+steplog = (maxlog - minlog) / (nstep-1)
+#logbins = np.arange(minlog, maxlog+steplog, steplog)
+logbins = np.linspace(minlog, maxlog, num=nstep+1)
+binmids = np.zeros(nstep)
 for i in range(0,nstep):
     binmids[i] = (logbins[i]+logbins[i+1])/2.
 
-xi = mo.tpcf(pos, 10**logbins, period=lbox)
+x_rand = lbox * np.random.random(len(pos)*6)
+y_rand = lbox * np.random.random(len(pos)*6)
+z_rand = lbox * np.random.random(len(pos)*6)
+randpos = np.vstack((x_rand,y_rand,z_rand)).T
+
+xi, cov = mo.tpcf_jackknife(pos, randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
+error = np.sqrt(1./np.diag(cov))
 
 mcf_vratio = mo.marked_tpcf(pos, 10**logbins, marks1=mass_sort['halo_cV'], period=lbox,
-                            normalize_by='number_counts', wfunc=1)
+                            normalize_by='number_counts', wfunc=1, num_threads='max')
 mcfn_vratio = (mcf_vratio - np.mean(mass_sort['halo_cV'])**2)/(np.var(mass_sort['halo_cV']))
 
 mcf_cnfw = mo.marked_tpcf(pos, 10**logbins, marks1=mass_sort['halo_cNFW'], period=lbox,
-                          normalize_by='number_counts', wfunc=1)
+                          normalize_by='number_counts', wfunc=1, num_threads='max')
 mcfn_cnfw = (mcf_cnfw - np.mean(mass_sort['halo_cNFW'])**2)/(np.var(mass_sort['halo_cNFW']))
 
 mcf_ctoa = mo.marked_tpcf(pos, 10**logbins, marks1=mass_sort['halo_ctoa'], period=lbox,
-                          normalize_by='number_counts', wfunc=1)
+                          normalize_by='number_counts', wfunc=1, num_threads='max')
 mcfn_ctoa = (mcf_ctoa - np.mean(mass_sort['halo_ctoa'])**2)/(np.var(mass_sort['halo_ctoa']))
 
 mcf_spin = mo.marked_tpcf(pos, 10**logbins, marks1=mass_sort['halo_spin'], period=lbox,
-                          normalize_by='number_counts', wfunc=1)
+                          normalize_by='number_counts', wfunc=1, num_threads='max')
 mcfn_spin = (mcf_spin - np.mean(mass_sort['halo_spin'])**2)/(np.var(mass_sort['halo_spin']))
 
 mass_sort_satflag = mass_sort[np.where(mass_sort['halo_satflag']==1)]
 
-mcf_nsat = mo.marked_tpcf(pos[np.where(mass_sort['halo_satflag']==1)], 10**logbins, marks1=mass_sort_satflag['halo_nsat'], period=lbox, normalize_by='number_counts', wfunc=1)
+mcf_nsat = mo.marked_tpcf(pos[np.where(mass_sort['halo_satflag']==1)], 10**logbins, marks1=mass_sort_satflag['halo_nsat'], period=lbox, normalize_by='number_counts', wfunc=1, num_threads='max')
 
 mcfn_nsat = (mcf_nsat - np.mean(mass_sort_satflag['halo_nsat'])**2)/(np.var(mass_sort_satflag['halo_nsat']))
 
@@ -141,18 +151,18 @@ for i in range(0, nrand):
     randm_nsat = np.random.permutation(mass_sort_satflag['halo_nsat'])
 
     mcf_vratio_rand[:,i] = mo.marked_tpcf(pos, 10**logbins, marks1=randm_vratio, period=lbox,
-                                      normalize_by='number_counts', wfunc=1)
+                                      normalize_by='number_counts', wfunc=1, num_threads='max')
     mcfn_vratio_rand[:,i] = (mcf_vratio_rand[:,i] - np.mean(randm_vratio)**2)/(np.var(randm_vratio))
     mcf_cnfw_rand[:,i] = mo.marked_tpcf(pos, 10**logbins, marks1=randm_cnfw, period=lbox,
-                                        normalize_by='number_counts', wfunc=1)
+                                        normalize_by='number_counts', wfunc=1, num_threads='max')
     mcfn_cnfw_rand[:,i] = (mcf_cnfw_rand[:,i] - np.mean(randm_cnfw)**2)/(np.var(randm_cnfw))
     mcf_ctoa_rand[:,i] = mo.marked_tpcf(pos, 10**logbins, marks1=randm_ctoa, period=lbox,
-                                        normalize_by='number_counts', wfunc=1)
+                                        normalize_by='number_counts', wfunc=1, num_threads='max')
     mcfn_ctoa_rand[:,i] = (mcf_ctoa_rand[:,i] - np.mean(randm_ctoa)**2)/(np.var(randm_ctoa))
     mcf_spin_rand[:,i] = mo.marked_tpcf(pos, 10**logbins, marks1=randm_spin, period=lbox,
-                                        normalize_by='number_counts', wfunc=1)
+                                        normalize_by='number_counts', wfunc=1, num_threads='max')
     mcfn_spin_rand[:,i] = (mcf_spin_rand[:,i] - np.mean(randm_spin)**2)/(np.var(randm_spin))
-    mcf_nsat_rand[:,i] = mo.marked_tpcf(pos[np.where(mass_sort['halo_satflag']==1)], 10**logbins, marks1=randm_nsat, period=lbox, normalize_by='number_counts', wfunc=1)
+    mcf_nsat_rand[:,i] = mo.marked_tpcf(pos[np.where(mass_sort['halo_satflag']==1)], 10**logbins, marks1=randm_nsat, period=lbox, normalize_by='number_counts', wfunc=1, num_threads='max')
     mcfn_nsat_rand[:,i] = (mcf_nsat_rand[:,i] - np.mean(randm_nsat)**2)/(np.var(randm_nsat))
 
 mcfn_vratio_min = np.zeros(nstep)
@@ -179,33 +189,53 @@ for i in range(0, nstep):
     mcfn_nsat_max[i] = np.percentile(mcfn_nsat_rand[i,:],98, interpolation='nearest')
 
 cnfw_sort = np.sort(mass_sort, order='halo_cNFW')
-print len(cnfw_sort)
-
 lowlim=int(np.floor(.2*len(cnfw_sort)))
 highlim=int(np.floor(.8*len(cnfw_sort)))
 low_cnfw_sort = cnfw_sort[0:lowlim]
 high_cnfw_sort = cnfw_sort[highlim:-1]
 lowpos = np.vstack((low_cnfw_sort['halo_x'], low_cnfw_sort['halo_y'], low_cnfw_sort['halo_z'])).T
 highpos = np.vstack((high_cnfw_sort['halo_x'], high_cnfw_sort['halo_y'], high_cnfw_sort['halo_z'])).T
-x_rand = lbox * np.random.random(len(lowpos)*3)
-y_rand = lbox * np.random.random(len(lowpos)*3)
-z_rand = lbox * np.random.random(len(lowpos)*3)
+x_rand = lbox * np.random.random(len(lowpos)*6)
+y_rand = lbox * np.random.random(len(lowpos)*6)
+z_rand = lbox * np.random.random(len(lowpos)*6)
 randpos = np.vstack((x_rand,y_rand,z_rand)).T
-Nsub = np.array([2,2,2])
-xi_low, cov_low = mo.tpcf_jackknife(lowpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox)
-xi_high, cov_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox)
-error_low = np.sqrt(1./np.diag(cov_low))
-error_high = np.sqrt(1./np.diag(cov_high))
-yerr_low_low = np.maximum(1e-2, xi_low - error_low)
-yerr_high_low = xi_low + error_low
-yerr_low_high = np.maximum(1e-2, xi_high - error_high)
-yerr_high_high = xi_high + error_high
+xi_cnfw_low, cov_cnfw_low = mo.tpcf_jackknife(lowpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
+xi_cnfw_high, cov_cnfw_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
+error_cnfw_low = np.sqrt(1./np.diag(cov_cnfw_low))
+error_cnfw_high = np.sqrt(1./np.diag(cov_cnfw_high))
 
-np.savetxt(outname, np.transpose([10**binmids, xi, xi_low, xi_high, mcfn_vratio, mcfn_vratio_min, 
+spin_sort = np.sort(mass_sort, order='halo_spin')
+low_spin_sort = spin_sort[0:lowlim]
+high_spin_sort = spin_sort[highlim:-1]
+lowpos = np.vstack((low_spin_sort['halo_x'], low_spin_sort['halo_y'], low_spin_sort['halo_z'])).T
+highpos = np.vstack((high_spin_sort['halo_x'], high_spin_sort['halo_y'], high_spin_sort['halo_z'])).T
+x_rand = lbox * np.random.random(len(lowpos)*6)
+y_rand = lbox * np.random.random(len(lowpos)*6)
+z_rand = lbox * np.random.random(len(lowpos)*6)
+randpos = np.vstack((x_rand,y_rand,z_rand)).T
+xi_spin_low, cov_spin_low = mo.tpcf_jackknife(lowpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
+xi_spin_high, cov_spin_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
+error_spin_low = np.sqrt(1./np.diag(cov_spin_low))
+error_spin_high = np.sqrt(1./np.diag(cov_spin_high))
+
+ctoa_sort = np.sort(mass_sort, order='halo_ctoa')
+low_ctoa_sort = ctoa_sort[0:lowlim]
+high_ctoa_sort = ctoa_sort[highlim:-1]
+lowpos = np.vstack((low_ctoa_sort['halo_x'], low_ctoa_sort['halo_y'], low_ctoa_sort['halo_z'])).T
+highpos = np.vstack((high_ctoa_sort['halo_x'], high_ctoa_sort['halo_y'], high_ctoa_sort['halo_z'])).T
+x_rand = lbox * np.random.random(len(lowpos)*6)
+y_rand = lbox * np.random.random(len(lowpos)*6)
+z_rand = lbox * np.random.random(len(lowpos)*6)
+randpos = np.vstack((x_rand,y_rand,z_rand)).T
+xi_ctoa_low, cov_ctoa_low = mo.tpcf_jackknife(lowpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
+xi_ctoa_high, cov_ctoa_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
+error_ctoa_low = np.sqrt(1./np.diag(cov_ctoa_low))
+error_ctoa_high = np.sqrt(1./np.diag(cov_ctoa_high))
+
+np.savetxt(outname, np.transpose([10**binmids, xi, error, xi_cnfw_low, error_cnfw_low, xi_cnfw_high, error_cnfw_high, xi_ctoa_low, error_ctoa_low, xi_ctoa_high, error_ctoa_high, xi_spin_low, error_spin_low, xi_spin_high, error_spin_high, mcfn_vratio, mcfn_vratio_min, 
                                                   mcfn_vratio_max, mcfn_cnfw, mcfn_cnfw_min, mcfn_cnfw_max, mcfn_ctoa,
                                                   mcfn_ctoa_min, mcfn_ctoa_max, mcfn_spin, mcfn_spin_min, mcfn_spin_max, mcfn_nsat, mcfn_nsat_min, mcfn_nsat_max]), 
-header='r xi xi_low xi_high mcfn_vratio +low +high mcfn_cnfw +low +high mcf_ctoa +low +high mcf_spin +low +high mcf_nsat +low +high')
+header='r xi +err xi_cnfw_low +err xi_cnfw_high +err xi_ctoa_low +err xi_ctoa_high +err xi_spin_low +err xi_spin_high + err mcfn_vratio +low +high mcfn_cnfw +low +high mcf_ctoa +low +high mcf_spin +low +high mcf_nsat +low +high')
 
 print "Run Complete"
-
 print np.mean(mass_sort['halo_nsat'][np.where(mass_sort['halo_satflag'])])

@@ -1076,3 +1076,1954 @@ Total runtime to read in ASCII = 14.74 seconds
 89503
 Run Complete
 1.33540005905
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d50b.catalog
+ 
+Total number of rows in detected data = 2580156
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.85 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d50b.catalog
+ 
+Total number of rows in detected data = 2580156
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.70 seconds
+
+
+38623
+Run Complete
+1.43287514318
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d50b.catalog
+ 
+Total number of rows in detected data = 3284100
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.79 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d50b.catalog
+ 
+Total number of rows in detected data = 3284100
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 16.00 seconds
+
+
+60429
+Run Complete
+1.14767348843
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d75b.catalog
+ 
+Total number of rows in detected data = 3185791
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.69 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d75b.catalog
+ 
+Total number of rows in detected data = 3185791
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.79 seconds
+
+
+70136
+Run Complete
+0.980880090856
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d100b.catalog
+ 
+Total number of rows in detected data = 3102013
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.45 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d100b.catalog
+ 
+Total number of rows in detected data = 3102013
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.01 seconds
+
+
+82913
+Run Complete
+0.841259545722
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d75b.catalog
+ 
+Total number of rows in detected data = 2525532
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.48 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d75b.catalog
+ 
+Total number of rows in detected data = 2525532
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.02 seconds
+
+
+61009
+Run Complete
+1.32443721183
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d200b.catalog
+ 
+Total number of rows in detected data = 2881607
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.68 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d200b.catalog
+ 
+Total number of rows in detected data = 2881607
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.51 seconds
+
+
+99944
+Run Complete
+0.64060371989
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d100b.catalog
+ 
+Total number of rows in detected data = 2476338
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 16.04 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d100b.catalog
+ 
+Total number of rows in detected data = 2476338
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 16.43 seconds
+
+
+68587
+Run Complete
+1.24538754765
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d200b.catalog
+ 
+Total number of rows in detected data = 2342337
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 16.33 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d200b.catalog
+ 
+Total number of rows in detected data = 2342337
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 18.18 seconds
+
+
+76261
+Run Complete
+1.05299690461
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d50b.catalog
+ 
+Total number of rows in detected data = 2037651
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 18.79 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d50b.catalog
+ 
+Total number of rows in detected data = 2037651
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 21.01 seconds
+
+
+62857
+Run Complete
+1.71076706545
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d75b.catalog
+ 
+Total number of rows in detected data = 2009525
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 17.14 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d75b.catalog
+ 
+Total number of rows in detected data = 2009525
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 16.02 seconds
+
+
+70057
+Run Complete
+1.61522978866
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d100b.catalog
+ 
+Total number of rows in detected data = 1982374
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 16.52 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d100b.catalog
+ 
+Total number of rows in detected data = 1982374
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.94 seconds
+
+
+78201
+Run Complete
+1.524854745
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d200b.catalog
+ 
+Total number of rows in detected data = 1900285
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 19.63 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d200b.catalog
+ 
+Total number of rows in detected data = 1900285
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 17.25 seconds
+
+
+89503
+Run Complete
+1.33540005905
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d340b.catalog
+ 
+Total number of rows in detected data = 2032025
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.55 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d340b.catalog
+ 
+Total number of rows in detected data = 2032025
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.84 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+Run Complete
+1.73617636429
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d200b.catalog
+ 
+Total number of rows in detected data = 2881607
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.67 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d200b.catalog
+ 
+Total number of rows in detected data = 2881607
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.94 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d50b.catalog
+ 
+Total number of rows in detected data = 3284100
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 16.09 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d50b.catalog
+ 
+Total number of rows in detected data = 3284100
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.86 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d100b.catalog
+ 
+Total number of rows in detected data = 3102013
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.89 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d100b.catalog
+ 
+Total number of rows in detected data = 3102013
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.27 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d75b.catalog
+ 
+Total number of rows in detected data = 3185791
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.55 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d75b.catalog
+ 
+Total number of rows in detected data = 3185791
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 16.07 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+Run Complete
+0.64060371989
+Run Complete
+1.14767348843
+Run Complete
+0.980880090856
+Run Complete
+0.841259545722
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d340b.catalog
+ 
+Total number of rows in detected data = 2032025
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 16.37 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d340b.catalog
+ 
+Total number of rows in detected data = 2032025
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.08 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d200b.catalog
+ 
+Total number of rows in detected data = 2342337
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.81 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d200b.catalog
+ 
+Total number of rows in detected data = 2342337
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 16.88 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d100b.catalog
+ 
+Total number of rows in detected data = 2476338
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.69 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d100b.catalog
+ 
+Total number of rows in detected data = 2476338
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.65 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d75b.catalog
+ 
+Total number of rows in detected data = 2525532
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 18.81 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d75b.catalog
+ 
+Total number of rows in detected data = 2525532
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 17.31 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d200b.catalog
+ 
+Total number of rows in detected data = 1900285
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 19.28 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d200b.catalog
+ 
+Total number of rows in detected data = 1900285
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 49.82 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d50b.catalog
+ 
+Total number of rows in detected data = 2580156
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 19.33 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d50b.catalog
+ 
+Total number of rows in detected data = 2580156
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 28.92 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d100b.catalog
+ 
+Total number of rows in detected data = 1982374
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 20.62 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d100b.catalog
+ 
+Total number of rows in detected data = 1982374
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 1.0 minutes
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d75b.catalog
+ 
+Total number of rows in detected data = 2009525
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 37.82 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d75b.catalog
+ 
+Total number of rows in detected data = 2009525
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 1.5 minutes
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d50b.catalog
+ 
+Total number of rows in detected data = 2037651
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 58.13 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d50b.catalog
+ 
+Total number of rows in detected data = 2037651
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 1.5 minutes
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d10b.catalog
+ 
+Total number of rows in detected data = 2033098
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 1.2 minutes
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d10b.catalog
+ 
+Total number of rows in detected data = 2033098
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 1.2 minutes
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d200b.catalog
+ 
+Total number of rows in detected data = 2881607
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.57 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d200b.catalog
+ 
+Total number of rows in detected data = 2881607
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.42 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d75b.catalog
+ 
+Total number of rows in detected data = 3185791
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.98 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d75b.catalog
+ 
+Total number of rows in detected data = 3185791
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 16.37 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d100b.catalog
+ 
+Total number of rows in detected data = 3102013
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.71 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d100b.catalog
+ 
+Total number of rows in detected data = 3102013
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 16.93 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d50b.catalog
+ 
+Total number of rows in detected data = 3284100
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.11 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d50b.catalog
+ 
+Total number of rows in detected data = 3284100
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.46 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+Run Complete
+2.21464860288
+Run Complete
+1.73617636429
+Run Complete
+1.43287514318
+Run Complete
+1.32443721183
+Run Complete
+1.24538754765
+Run Complete
+1.05299690461
+Run Complete
+1.14767348843
+Run Complete
+0.980880090856
+Run Complete
+0.841259545722
+Run Complete
+1.71076706545
+Run Complete
+0.64060371989
+Run Complete
+1.61522978866
+Run Complete
+1.524854745
+Run Complete
+1.33540005905
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d340b.catalog
+ 
+Total number of rows in detected data = 2032025
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.25 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d340b.catalog
+ 
+Total number of rows in detected data = 2032025
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.35 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d100b.catalog
+ 
+Total number of rows in detected data = 2476338
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.77 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d100b.catalog
+ 
+Total number of rows in detected data = 2476338
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.88 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d200b.catalog
+ 
+Total number of rows in detected data = 2342337
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.40 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d200b.catalog
+ 
+Total number of rows in detected data = 2342337
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.56 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d75b.catalog
+ 
+Total number of rows in detected data = 2525532
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 16.12 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d75b.catalog
+ 
+Total number of rows in detected data = 2525532
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 17.64 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d50b.catalog
+ 
+Total number of rows in detected data = 2580156
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.87 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d50b.catalog
+ 
+Total number of rows in detected data = 2580156
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 32.99 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d200b.catalog
+ 
+Total number of rows in detected data = 1900285
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 25.21 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d200b.catalog
+ 
+Total number of rows in detected data = 1900285
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 1.2 minutes
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d100b.catalog
+ 
+Total number of rows in detected data = 1982374
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 45.31 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d100b.catalog
+ 
+Total number of rows in detected data = 1982374
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 1.4 minutes
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d75b.catalog
+ 
+Total number of rows in detected data = 2009525
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 1.1 minutes
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d75b.catalog
+ 
+Total number of rows in detected data = 2009525
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 1.4 minutes
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d200b.catalog
+ 
+Total number of rows in detected data = 2881607
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.65 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d200b.catalog
+ 
+Total number of rows in detected data = 2881607
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.13 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d50b.catalog
+ 
+Total number of rows in detected data = 2037651
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 1.2 minutes
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d50b.catalog
+ 
+Total number of rows in detected data = 2037651
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 1.4 minutes
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d10b.catalog
+ 
+Total number of rows in detected data = 2033098
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 1.3 minutes
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d10b.catalog
+ 
+Total number of rows in detected data = 2033098
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 1.3 minutes
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d50b.catalog
+ 
+Total number of rows in detected data = 3284100
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.60 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d50b.catalog
+ 
+Total number of rows in detected data = 3284100
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.55 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d75b.catalog
+ 
+Total number of rows in detected data = 3185791
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.93 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d75b.catalog
+ 
+Total number of rows in detected data = 3185791
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.93 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d100b.catalog
+ 
+Total number of rows in detected data = 3102013
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.84 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d100b.catalog
+ 
+Total number of rows in detected data = 3102013
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.73 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+Traceback (most recent call last):
+  File "halotools-pipe.py", line 237, in <module>
+    header='r xi +err xi_cnfw_low +err xi_cnfw_high +err xi_ctoa_low +err xi_ctoa_high +err xi_spin_low +err xi_spin_high + err mcfn_vratio +low +high mcfn_cnfw +low +high mcf_ctoa +low +high mcf_spin +low +high mcf_nsat +low +high')
+  File "/opt/anaconda2/lib/python2.7/site-packages/numpy/lib/npyio.py", line 1160, in savetxt
+    % (str(X.dtype), format))
+TypeError: Mismatch between array dtype ('object') and format specifier ('%.18e')
+Traceback (most recent call last):
+  File "halotools-pipe.py", line 237, in <module>
+    header='r xi +err xi_cnfw_low +err xi_cnfw_high +err xi_ctoa_low +err xi_ctoa_high +err xi_spin_low +err xi_spin_high + err mcfn_vratio +low +high mcfn_cnfw +low +high mcf_ctoa +low +high mcf_spin +low +high mcf_nsat +low +high')
+  File "/opt/anaconda2/lib/python2.7/site-packages/numpy/lib/npyio.py", line 1160, in savetxt
+    % (str(X.dtype), format))
+TypeError: Mismatch between array dtype ('object') and format specifier ('%.18e')
+Traceback (most recent call last):
+  File "halotools-pipe.py", line 237, in <module>
+    header='r xi +err xi_cnfw_low +err xi_cnfw_high +err xi_ctoa_low +err xi_ctoa_high +err xi_spin_low +err xi_spin_high + err mcfn_vratio +low +high mcfn_cnfw +low +high mcf_ctoa +low +high mcf_spin +low +high mcf_nsat +low +high')
+  File "/opt/anaconda2/lib/python2.7/site-packages/numpy/lib/npyio.py", line 1160, in savetxt
+    % (str(X.dtype), format))
+TypeError: Mismatch between array dtype ('object') and format specifier ('%.18e')
+Traceback (most recent call last):
+  File "halotools-pipe.py", line 237, in <module>
+    header='r xi +err xi_cnfw_low +err xi_cnfw_high +err xi_ctoa_low +err xi_ctoa_high +err xi_spin_low +err xi_spin_high + err mcfn_vratio +low +high mcfn_cnfw +low +high mcf_ctoa +low +high mcf_spin +low +high mcf_nsat +low +high')
+  File "/opt/anaconda2/lib/python2.7/site-packages/numpy/lib/npyio.py", line 1160, in savetxt
+    % (str(X.dtype), format))
+TypeError: Mismatch between array dtype ('object') and format specifier ('%.18e')
+Traceback (most recent call last):
+  File "halotools-pipe.py", line 237, in <module>
+    header='r xi +err xi_cnfw_low +err xi_cnfw_high +err xi_ctoa_low +err xi_ctoa_high +err xi_spin_low +err xi_spin_high + err mcfn_vratio +low +high mcfn_cnfw +low +high mcf_ctoa +low +high mcf_spin +low +high mcf_nsat +low +high')
+  File "/opt/anaconda2/lib/python2.7/site-packages/numpy/lib/npyio.py", line 1160, in savetxt
+    % (str(X.dtype), format))
+TypeError: Mismatch between array dtype ('object') and format specifier ('%.18e')
+Traceback (most recent call last):
+  File "halotools-pipe.py", line 237, in <module>
+    header='r xi +err xi_cnfw_low +err xi_cnfw_high +err xi_ctoa_low +err xi_ctoa_high +err xi_spin_low +err xi_spin_high + err mcfn_vratio +low +high mcfn_cnfw +low +high mcf_ctoa +low +high mcf_spin +low +high mcf_nsat +low +high')
+  File "/opt/anaconda2/lib/python2.7/site-packages/numpy/lib/npyio.py", line 1160, in savetxt
+    % (str(X.dtype), format))
+TypeError: Mismatch between array dtype ('object') and format specifier ('%.18e')
+Traceback (most recent call last):
+  File "halotools-pipe.py", line 237, in <module>
+    header='r xi +err xi_cnfw_low +err xi_cnfw_high +err xi_ctoa_low +err xi_ctoa_high +err xi_spin_low +err xi_spin_high + err mcfn_vratio +low +high mcfn_cnfw +low +high mcf_ctoa +low +high mcf_spin +low +high mcf_nsat +low +high')
+  File "/opt/anaconda2/lib/python2.7/site-packages/numpy/lib/npyio.py", line 1160, in savetxt
+    % (str(X.dtype), format))
+TypeError: Mismatch between array dtype ('object') and format specifier ('%.18e')
+Traceback (most recent call last):
+  File "halotools-pipe.py", line 237, in <module>
+    header='r xi +err xi_cnfw_low +err xi_cnfw_high +err xi_ctoa_low +err xi_ctoa_high +err xi_spin_low +err xi_spin_high + err mcfn_vratio +low +high mcfn_cnfw +low +high mcf_ctoa +low +high mcf_spin +low +high mcf_nsat +low +high')
+  File "/opt/anaconda2/lib/python2.7/site-packages/numpy/lib/npyio.py", line 1160, in savetxt
+    % (str(X.dtype), format))
+TypeError: Mismatch between array dtype ('object') and format specifier ('%.18e')
+Traceback (most recent call last):
+  File "halotools-pipe.py", line 237, in <module>
+    header='r xi +err xi_cnfw_low +err xi_cnfw_high +err xi_ctoa_low +err xi_ctoa_high +err xi_spin_low +err xi_spin_high + err mcfn_vratio +low +high mcfn_cnfw +low +high mcf_ctoa +low +high mcf_spin +low +high mcf_nsat +low +high')
+  File "/opt/anaconda2/lib/python2.7/site-packages/numpy/lib/npyio.py", line 1160, in savetxt
+    % (str(X.dtype), format))
+TypeError: Mismatch between array dtype ('object') and format specifier ('%.18e')
+Traceback (most recent call last):
+  File "halotools-pipe.py", line 237, in <module>
+    header='r xi +err xi_cnfw_low +err xi_cnfw_high +err xi_ctoa_low +err xi_ctoa_high +err xi_spin_low +err xi_spin_high + err mcfn_vratio +low +high mcfn_cnfw +low +high mcf_ctoa +low +high mcf_spin +low +high mcf_nsat +low +high')
+  File "/opt/anaconda2/lib/python2.7/site-packages/numpy/lib/npyio.py", line 1160, in savetxt
+    % (str(X.dtype), format))
+TypeError: Mismatch between array dtype ('object') and format specifier ('%.18e')
+Traceback (most recent call last):
+  File "halotools-pipe.py", line 237, in <module>
+    header='r xi +err xi_cnfw_low +err xi_cnfw_high +err xi_ctoa_low +err xi_ctoa_high +err xi_spin_low +err xi_spin_high + err mcfn_vratio +low +high mcfn_cnfw +low +high mcf_ctoa +low +high mcf_spin +low +high mcf_nsat +low +high')
+  File "/opt/anaconda2/lib/python2.7/site-packages/numpy/lib/npyio.py", line 1160, in savetxt
+    % (str(X.dtype), format))
+TypeError: Mismatch between array dtype ('object') and format specifier ('%.18e')
+Traceback (most recent call last):
+  File "halotools-pipe.py", line 237, in <module>
+    header='r xi +err xi_cnfw_low +err xi_cnfw_high +err xi_ctoa_low +err xi_ctoa_high +err xi_spin_low +err xi_spin_high + err mcfn_vratio +low +high mcfn_cnfw +low +high mcf_ctoa +low +high mcf_spin +low +high mcf_nsat +low +high')
+  File "/opt/anaconda2/lib/python2.7/site-packages/numpy/lib/npyio.py", line 1160, in savetxt
+    % (str(X.dtype), format))
+TypeError: Mismatch between array dtype ('object') and format specifier ('%.18e')
+Traceback (most recent call last):
+  File "halotools-pipe.py", line 237, in <module>
+    header='r xi +err xi_cnfw_low +err xi_cnfw_high +err xi_ctoa_low +err xi_ctoa_high +err xi_spin_low +err xi_spin_high + err mcfn_vratio +low +high mcfn_cnfw +low +high mcf_ctoa +low +high mcf_spin +low +high mcf_nsat +low +high')
+  File "/opt/anaconda2/lib/python2.7/site-packages/numpy/lib/npyio.py", line 1160, in savetxt
+    % (str(X.dtype), format))
+TypeError: Mismatch between array dtype ('object') and format specifier ('%.18e')
+Traceback (most recent call last):
+  File "halotools-pipe.py", line 237, in <module>
+    header='r xi +err xi_cnfw_low +err xi_cnfw_high +err xi_ctoa_low +err xi_ctoa_high +err xi_spin_low +err xi_spin_high + err mcfn_vratio +low +high mcfn_cnfw +low +high mcf_ctoa +low +high mcf_spin +low +high mcf_nsat +low +high')
+  File "/opt/anaconda2/lib/python2.7/site-packages/numpy/lib/npyio.py", line 1160, in savetxt
+    % (str(X.dtype), format))
+TypeError: Mismatch between array dtype ('object') and format specifier ('%.18e')
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d340b.catalog
+ 
+Total number of rows in detected data = 2032025
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.27 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d340b.catalog
+ 
+Total number of rows in detected data = 2032025
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.41 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d200b.catalog
+ 
+Total number of rows in detected data = 2342337
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.74 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d200b.catalog
+ 
+Total number of rows in detected data = 2342337
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.25 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d100b.catalog
+ 
+Total number of rows in detected data = 2476338
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.67 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d100b.catalog
+ 
+Total number of rows in detected data = 2476338
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.02 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d200b.catalog
+ 
+Total number of rows in detected data = 1900285
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 17.17 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d200b.catalog
+ 
+Total number of rows in detected data = 1900285
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 26.03 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d75b.catalog
+ 
+Total number of rows in detected data = 2525532
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.29 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d75b.catalog
+ 
+Total number of rows in detected data = 2525532
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.64 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d200b.catalog
+ 
+Total number of rows in detected data = 2881607
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.38 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d200b.catalog
+ 
+Total number of rows in detected data = 2881607
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.50 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d50b.catalog
+ 
+Total number of rows in detected data = 2580156
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.79 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d50b.catalog
+ 
+Total number of rows in detected data = 2580156
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 18.54 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d100b.catalog
+ 
+Total number of rows in detected data = 1982374
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 22.56 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d100b.catalog
+ 
+Total number of rows in detected data = 1982374
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 24.78 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d75b.catalog
+ 
+Total number of rows in detected data = 2009525
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 24.73 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d75b.catalog
+ 
+Total number of rows in detected data = 2009525
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 43.77 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d50b.catalog
+ 
+Total number of rows in detected data = 2037651
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 25.23 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d50b.catalog
+ 
+Total number of rows in detected data = 2037651
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 1.5 minutes
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d10b.catalog
+ 
+Total number of rows in detected data = 2033098
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 22.66 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d10b.catalog
+ 
+Total number of rows in detected data = 2033098
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 1.5 minutes
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d75b.catalog
+ 
+Total number of rows in detected data = 3185791
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.19 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d75b.catalog
+ 
+Total number of rows in detected data = 3185791
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.69 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d100b.catalog
+ 
+Total number of rows in detected data = 3102013
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.62 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d100b.catalog
+ 
+Total number of rows in detected data = 3102013
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.75 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:124: UserWarning: Warning: data1 does not contain points in every jackknife sample.
+  warn("Warning: data1 does not contain points in every jackknife sample.")
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/double_tree_helpers.py:126: UserWarning: Warning: data2 does not contain points in every jackknife sample.
+  warn("Warning: data2 does not contain points in every jackknife sample.")
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d50b.catalog
+ 
+Total number of rows in detected data = 3284100
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.61 seconds
+
+
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d50b.catalog
+ 
+Total number of rows in detected data = 3284100
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.16 seconds
+
+
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/error_estimation_tools.py:150: UserWarning: 
+ the nubumber of samples is smaller than the number of 
+observations. It is recommended to increase the number 
+of samples or decrease the number of observations.
+  warn(msg)
+Run Complete
+2.21464860288
+Run Complete
+1.73617636429
+Run Complete
+1.71076706545
+Run Complete
+1.61522978866
+Run Complete
+1.524854745
+Run Complete
+1.43287514318
+Run Complete
+1.33540005905
+Run Complete
+1.32443721183
+Run Complete
+1.24538754765
+Run Complete
+1.14767348843
+Run Complete
+1.05299690461
+Run Complete
+0.980880090856
+Run Complete
+0.841259545722
+Run Complete
+0.64060371989
