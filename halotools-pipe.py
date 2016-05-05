@@ -7,11 +7,11 @@ import halotools.mock_observables as mo
 import halotools.sim_manager as sm
 import astropy.coordinates as coord
 
-lbox=250       # size of simulation box
-delta=200      # overdensity parameter
-mthresh=7e11   # mass threshold
-matchdelta=70  # best fit delta to remove environmental effects
-matchthresh=9e11 # best fit delta mass cut
+lbox=500       # size of simulation box
+delta=340      # overdensity parameter
+mthresh=3e12   # mass threshold
+matchdelta=200  # best fit delta to remove environmental effects
+matchthresh=4e12 # best fit delta mass cut
 
 # reading in the best match file to serve as the master catalog for creating a matched catalog that will
 # be analyzed down the road.
@@ -25,7 +25,7 @@ vsub_min = vhost_min * vrat_frac # resulting minimum vsub for catalog pruning
 # file name settings based on above
 fname = './l0'+str(lbox)+'_d'+str(delta)+'b.catalog'
 outname = './l0'+str(lbox)+'_m'+str(mthresh).replace("+","") +'_d'+str(delta)+'b_nolog.dat'
-nrand = 2          # number of randomizations for error bars
+nrand = 200          # number of randomizations for error bars
 nstep = 10           # number of bins for correlation functions
 Nsub = np.array([2,2,2]) # number of octants for jackknife errors
 
@@ -38,12 +38,18 @@ reader = sm.TabularAsciiReader(fname_match, rs_dict, row_cut_min_dict={'halo_mas
 				row_cut_eq_dict={'halo_pid':-1})
 hosts_data_master = reader.read_ascii()
 
+print 'Matched Catalog read: ', len(hosts_data_master)
+
 reader = sm.TabularAsciiReader(fname, rs_dict, row_cut_min_dict={'halo_mass':mthresh},
                                row_cut_eq_dict={'halo_pid':-1})
 hosts_data = reader.read_ascii()
 
+print 'Hosts read: ', len(hosts_data)
+
 reader = sm.TabularAsciiReader(fname, rs_dict, row_cut_min_dict={'halo_vmax':vsub_min}, row_cut_neq_dict={'halo_pid':-1})
 subs_data = reader.read_ascii()
+
+print 'Subs read: ', len(subs_data)
 
 # take a moment to calculate what the matched catalog contains
 c_master = coord.SkyCoord(x=hosts_data_master['halo_x'], y=hosts_data_master['halo_y'], z=hosts_data_master['halo_z'],
@@ -53,6 +59,9 @@ c_matching = coord.SkyCoord(x=hosts_data['halo_x'], y=hosts_data['halo_y'], z=ho
 
 _, _, sep3d = coord.match_coordinates_3d(c_matching, c_master)
 mask = (sep3d.value <= hosts_data['halo_rvir']*.001*.1)
+
+print 'Matches found: ', np.sum(mask)
+
 # let the calculation be done to add additional marks to the main catalog (and satellite number) and then
 # make a cut with only the matched galaxies. We won't do satellite numbers because it will likely
 # not work terribly well due to statistics.
