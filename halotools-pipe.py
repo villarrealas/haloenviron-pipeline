@@ -84,7 +84,7 @@ for i in range(0, len(hosts_data)):
          xdist = subs_cut[j]['halo_x'] - hosts_data[i]['halo_x']
          ydist = subs_cut[j]['halo_y'] - hosts_data[i]['halo_y']
          zdist = subs_cut[j]['halo_z'] - hosts_data[i]['halo_z']
-         totdist = (xdist**2 + ydist**2 + zdist**2)*0.001
+         totdist = (np.sqrt(xdist**2 + ydist**2 + zdist**2))*0.001
          if totdist < hosts_data[i]['halo_rvir']:
             ratio = subs_cut[j]['halo_vmax']/hosts_data[i]['halo_vmax']
             if ratio > vrat_frac:
