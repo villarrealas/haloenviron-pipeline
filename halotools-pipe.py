@@ -7,11 +7,11 @@ import halotools.mock_observables as mo
 import halotools.sim_manager as sm
 import astropy.coordinates as coord
 
-lbox=500       # size of simulation box
-delta=340      # overdensity parameter
-mthresh=3e12   # mass threshold
-matchdelta=200  # best fit delta to remove environmental effects
-matchthresh=4e12 # best fit delta mass cut
+lbox=125       # size of simulation box
+delta=10      # overdensity parameter
+mthresh= 1e12  # mass threshold
+matchdelta=10  # best fit delta to remove environmental effects
+matchthresh= 1e12 # best fit delta mass cut
 
 # reading in the best match file to serve as the master catalog for creating a matched catalog that will
 # be analyzed down the road.
