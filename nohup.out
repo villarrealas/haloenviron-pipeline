@@ -4485,3 +4485,681 @@ Main Run Complete -> Beginning Matched Catalog Analysis
 Main Run Complete -> Beginning Matched Catalog Analysis
 Main Run Complete -> Beginning Matched Catalog Analysis
 Main Run Complete -> Beginning Matched Catalog Analysis
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d10b.catalog
+ 
+Total number of rows in detected data = 2033098
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 13.80 seconds
+
+
+Matched Catalog read:  34052
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d75b.catalog
+ 
+Total number of rows in detected data = 2009525
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.21 seconds
+
+
+Hosts read:  78591
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d75b.catalog
+ 
+Total number of rows in detected data = 2009525
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 13.53 seconds
+
+
+Subs read:  48975
+Matches found:  33881
+Main Run Complete -> Beginning Matched Catalog Analysis
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d10b.catalog
+ 
+Total number of rows in detected data = 2033098
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 14.39 seconds
+
+
+Matched Catalog read:  34052
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d100b.catalog
+ 
+Total number of rows in detected data = 1982374
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.11 seconds
+
+
+Hosts read:  86399
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d100b.catalog
+ 
+Total number of rows in detected data = 1982374
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 13.43 seconds
+
+
+Subs read:  45628
+Matches found:  33903
+Main Run Complete -> Beginning Matched Catalog Analysis
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d200b.catalog
+ 
+Total number of rows in detected data = 2881607
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 20.23 seconds
+
+
+Matched Catalog read:  163683
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d200b.catalog
+ 
+Total number of rows in detected data = 2881607
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 19.50 seconds
+
+
+Hosts read:  163683
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d200b.catalog
+ 
+Total number of rows in detected data = 2881607
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 20.04 seconds
+
+
+Subs read:  312679
+Matches found:  163683
+Main Run Complete -> Beginning Matched Catalog Analysis
+Traceback (most recent call last):
+  File "halotools-pipe.py", line 323, in <module>
+    xi, cov = mo.tpcf_jackknife(pos, randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
+  File "/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/two_point_clustering/tpcf_jackknife.py", line 260, in tpcf_jackknife
+    rbins, period, num_threads, do_DR, do_RR)
+  File "/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/two_point_clustering/tpcf_jackknife.py", line 418, in jrandom_counts
+    N_samples=N_sub_vol, num_threads=num_threads)
+  File "/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/npairs_jackknife_3d.py", line 187, in npairs_jackknife_3d
+    result = pool.map(engine, cell1_tuples)
+  File "/opt/anaconda2/lib/python2.7/multiprocessing/pool.py", line 251, in map
+    return self.map_async(func, iterable, chunksize).get()
+  File "/opt/anaconda2/lib/python2.7/multiprocessing/pool.py", line 567, in get
+    raise self._value
+IOError: bad message length
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d200b.catalog
+ 
+Total number of rows in detected data = 2881607
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 20.29 seconds
+
+
+Matched Catalog read:  163683
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d340b.catalog
+ 
+Total number of rows in detected data = 2703154
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 20.72 seconds
+
+
+Hosts read:  210629
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d340b.catalog
+ 
+Total number of rows in detected data = 2703154
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 19.08 seconds
+
+
+Subs read:  5114
+Matches found:  162487
+Main Run Complete -> Beginning Matched Catalog Analysis
+Traceback (most recent call last):
+  File "halotools-pipe.py", line 323, in <module>
+    xi, cov = mo.tpcf_jackknife(pos, randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
+  File "/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/two_point_clustering/tpcf_jackknife.py", line 260, in tpcf_jackknife
+    rbins, period, num_threads, do_DR, do_RR)
+  File "/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/two_point_clustering/tpcf_jackknife.py", line 418, in jrandom_counts
+    N_samples=N_sub_vol, num_threads=num_threads)
+  File "/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/npairs_jackknife_3d.py", line 187, in npairs_jackknife_3d
+    result = pool.map(engine, cell1_tuples)
+  File "/opt/anaconda2/lib/python2.7/multiprocessing/pool.py", line 251, in map
+    return self.map_async(func, iterable, chunksize).get()
+  File "/opt/anaconda2/lib/python2.7/multiprocessing/pool.py", line 567, in get
+    raise self._value
+IOError: bad message length
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d200b.catalog
+ 
+Total number of rows in detected data = 2881607
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 20.02 seconds
+
+
+Matched Catalog read:  163683
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d100b.catalog
+ 
+Total number of rows in detected data = 3102013
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 23.32 seconds
+
+
+Hosts read:  147643
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d100b.catalog
+ 
+Total number of rows in detected data = 3102013
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 22.06 seconds
+
+
+Subs read:  415420
+Matches found:  145642
+Main Run Complete -> Beginning Matched Catalog Analysis
+Traceback (most recent call last):
+  File "halotools-pipe.py", line 323, in <module>
+    xi, cov = mo.tpcf_jackknife(pos, randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
+  File "/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/two_point_clustering/tpcf_jackknife.py", line 260, in tpcf_jackknife
+    rbins, period, num_threads, do_DR, do_RR)
+  File "/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/two_point_clustering/tpcf_jackknife.py", line 418, in jrandom_counts
+    N_samples=N_sub_vol, num_threads=num_threads)
+  File "/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/npairs_jackknife_3d.py", line 187, in npairs_jackknife_3d
+    result = pool.map(engine, cell1_tuples)
+  File "/opt/anaconda2/lib/python2.7/multiprocessing/pool.py", line 251, in map
+    return self.map_async(func, iterable, chunksize).get()
+  File "/opt/anaconda2/lib/python2.7/multiprocessing/pool.py", line 567, in get
+    raise self._value
+IOError: bad message length
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d200b.catalog
+ 
+Total number of rows in detected data = 2881607
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 19.87 seconds
+
+
+Matched Catalog read:  163683
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d75b.catalog
+ 
+Total number of rows in detected data = 3185791
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 24.59 seconds
+
+
+Hosts read:  128582
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d75b.catalog
+ 
+Total number of rows in detected data = 3185791
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 22.67 seconds
+
+
+Subs read:  461637
+Matches found:  127286
+Main Run Complete -> Beginning Matched Catalog Analysis
+Traceback (most recent call last):
+  File "halotools-pipe.py", line 323, in <module>
+    xi, cov = mo.tpcf_jackknife(pos, randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
+  File "/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/two_point_clustering/tpcf_jackknife.py", line 260, in tpcf_jackknife
+    rbins, period, num_threads, do_DR, do_RR)
+  File "/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/two_point_clustering/tpcf_jackknife.py", line 418, in jrandom_counts
+    N_samples=N_sub_vol, num_threads=num_threads)
+  File "/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/npairs_jackknife_3d.py", line 187, in npairs_jackknife_3d
+    result = pool.map(engine, cell1_tuples)
+  File "/opt/anaconda2/lib/python2.7/multiprocessing/pool.py", line 251, in map
+    return self.map_async(func, iterable, chunksize).get()
+  File "/opt/anaconda2/lib/python2.7/multiprocessing/pool.py", line 567, in get
+    raise self._value
+IOError: bad message length
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d200b.catalog
+ 
+Total number of rows in detected data = 2881607
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 20.68 seconds
+
+
+Matched Catalog read:  163683
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d50b.catalog
+ 
+Total number of rows in detected data = 3284100
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 29.59 seconds
+
+
+Hosts read:  115084
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0500_d50b.catalog
+ 
+Total number of rows in detected data = 3284100
+Number of rows in detected header = 15 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 22.80 seconds
+
+
+Subs read:  532937
+Matches found:  113881
+Main Run Complete -> Beginning Matched Catalog Analysis
+Traceback (most recent call last):
+  File "halotools-pipe.py", line 323, in <module>
+    xi, cov = mo.tpcf_jackknife(pos, randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
+  File "/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/two_point_clustering/tpcf_jackknife.py", line 260, in tpcf_jackknife
+    rbins, period, num_threads, do_DR, do_RR)
+  File "/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/two_point_clustering/tpcf_jackknife.py", line 418, in jrandom_counts
+    N_samples=N_sub_vol, num_threads=num_threads)
+  File "/opt/anaconda2/lib/python2.7/site-packages/halotools/mock_observables/pair_counters/npairs_jackknife_3d.py", line 187, in npairs_jackknife_3d
+    result = pool.map(engine, cell1_tuples)
+  File "/opt/anaconda2/lib/python2.7/multiprocessing/pool.py", line 251, in map
+    return self.map_async(func, iterable, chunksize).get()
+  File "/opt/anaconda2/lib/python2.7/multiprocessing/pool.py", line 567, in get
+    raise self._value
+IOError: bad message length
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d10b.catalog
+ 
+Total number of rows in detected data = 2095780
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.90 seconds
+
+
+Matched Catalog read:  34189
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d100b.catalog
+ 
+Total number of rows in detected data = 2080879
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.71 seconds
+
+
+Hosts read:  86445
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d100b.catalog
+ 
+Total number of rows in detected data = 2080879
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.63 seconds
+
+
+Subs read:  45960
+Matches found:  34030
+Main Run Complete -> Beginning Matched Catalog Analysis
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d10b.catalog
+ 
+Total number of rows in detected data = 2095780
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 16.07 seconds
+
+
+Matched Catalog read:  34189
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d75b.catalog
+ 
+Total number of rows in detected data = 2102150
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 16.03 seconds
+
+
+Hosts read:  78756
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d75b.catalog
+ 
+Total number of rows in detected data = 2102150
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.98 seconds
+
+
+Subs read:  49291
+Matches found:  34011
+Main Run Complete -> Beginning Matched Catalog Analysis
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d10b.catalog
+ 
+Total number of rows in detected data = 2095780
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 17.12 seconds
+
+
+Matched Catalog read:  34189
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d50b.catalog
+ 
+Total number of rows in detected data = 2122236
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 16.84 seconds
+
+
+Hosts read:  71937
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d50b.catalog
+ 
+Total number of rows in detected data = 2122236
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 16.72 seconds
+
+
+Subs read:  53951
+Matches found:  34004
+Main Run Complete -> Beginning Matched Catalog Analysis
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d10b.catalog
+ 
+Total number of rows in detected data = 2095780
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.52 seconds
+
+
+Matched Catalog read:  34189
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d10b.catalog
+ 
+Total number of rows in detected data = 2095780
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.68 seconds
+
+
+Hosts read:  34189
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0125_d10b.catalog
+ 
+Total number of rows in detected data = 2095780
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 15.49 seconds
+
+
+Subs read:  76755
+Matches found:  34189
+Main Run Complete -> Beginning Matched Catalog Analysis
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d70b.catalog
+ 
+Total number of rows in detected data = 2657933
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 22.76 seconds
+
+
+Matched Catalog read:  88125
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d200b.catalog
+ 
+Total number of rows in detected data = 2501871
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 19.60 seconds
+
+
+Hosts read:  100159
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d200b.catalog
+ 
+Total number of rows in detected data = 2501871
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 19.56 seconds
+
+
+Subs read:  189508
+Matches found:  86555
+Main Run Complete -> Beginning Matched Catalog Analysis
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d70b.catalog
+ 
+Total number of rows in detected data = 2657933
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 20.11 seconds
+
+
+Matched Catalog read:  88125
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d100b.catalog
+ 
+Total number of rows in detected data = 2610326
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 20.60 seconds
+
+
+Hosts read:  95247
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d100b.catalog
+ 
+Total number of rows in detected data = 2610326
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 20.45 seconds
+
+
+Subs read:  241439
+Matches found:  87582
+Main Run Complete -> Beginning Matched Catalog Analysis
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d70b.catalog
+ 
+Total number of rows in detected data = 2657933
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 21.17 seconds
+
+
+Matched Catalog read:  88125
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d75b.catalog
+ 
+Total number of rows in detected data = 2649452
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 19.95 seconds
+
+
+Hosts read:  87792
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d75b.catalog
+ 
+Total number of rows in detected data = 2649452
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 19.89 seconds
+
+
+Subs read:  262981
+Matches found:  87178
+Main Run Complete -> Beginning Matched Catalog Analysis
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d70b.catalog
+ 
+Total number of rows in detected data = 2657933
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 21.02 seconds
+
+
+Matched Catalog read:  88125
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d70b.catalog
+ 
+Total number of rows in detected data = 2657933
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 20.90 seconds
+
+
+Hosts read:  88125
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d70b.catalog
+ 
+Total number of rows in detected data = 2657933
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 20.87 seconds
+
+
+Subs read:  268243
+Matches found:  88125
+Main Run Complete -> Beginning Matched Catalog Analysis
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d70b.catalog
+ 
+Total number of rows in detected data = 2657933
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 21.14 seconds
+
+
+Matched Catalog read:  88125
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d50b.catalog
+ 
+Total number of rows in detected data = 2692442
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 20.35 seconds
+
+
+Hosts read:  57226
+
+...Processing ASCII data of file: 
+/data/asv13/projects/haloenviron-pipeline/l0250_d50b.catalog
+ 
+Total number of rows in detected data = 2692442
+Number of rows in detected header = 16 
+
+... working on chunk 0 of 1
+Total runtime to read in ASCII = 20.24 seconds
+
+
+Subs read:  294229
+Matches found:  57109
+Main Run Complete -> Beginning Matched Catalog Analysis

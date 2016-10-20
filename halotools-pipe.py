@@ -7,11 +7,11 @@ import halotools.mock_observables as mo
 import halotools.sim_manager as sm
 import astropy.coordinates as coord
 
-lbox=125       # size of simulation box
-delta=50      # overdensity parameter
-mthresh= 1e11  # mass threshold
-matchdelta=10  # best fit delta to remove environmental effects
-matchthresh= 2e11 # best fit delta mass cut
+lbox=500       # size of simulation box
+delta=200      # overdensity parameter
+mthresh=1e13  # mass threshold
+matchdelta=200  # best fit delta to remove environmental effects
+matchthresh=1e13 # best fit delta mass cut
 
 # reading in the best match file to serve as the master catalog for creating a matched catalog that will
 # be analyzed down the road.
@@ -25,14 +25,14 @@ vsub_min = vhost_min * vrat_frac # resulting minimum vsub for catalog pruning
 # file name settings based on above
 fname = './l0'+str(lbox)+'_d'+str(delta)+'b.catalog'
 outname = './l0'+str(lbox)+'_m'+str(mthresh).replace("+","") +'_d'+str(delta)+'b.dat'
-nrand = 200          # number of randomizations for error bars
+nrand = 100          # number of randomizations for error bars
 nstep = 10           # number of bins for correlation functions
 Nsub = np.array([2,2,2]) # number of octants for jackknife errors
 
 # define dict pointing to all marks of interest
 rs_dict = {'halo_id':(0,'i8'), 'halo_mass':(2,'f8'), 'halo_vmax':(3,'f8'), 'halo_rvir':(5,'f8'),
            'halo_rs':(6,'f8'), 'halo_x':(8,'f8'), 'halo_y':(9,'f8'), 'halo_z':(10,'f8'),
-           'halo_spin':(17,'f8'), 'halo_ctoa':(28, 'f8'), 'halo_pid':(33,'i8')}
+           'halo_spin':(17,'f8'), 'halo_ctoa':(28, 'f8'), 'halo_pid':(41,'i8')}
 
 reader = sm.TabularAsciiReader(fname_match, rs_dict, row_cut_min_dict={'halo_mass':matchthresh},
 				row_cut_eq_dict={'halo_pid':-1})
@@ -136,9 +136,9 @@ binmids = np.zeros(nstep)
 for i in range(0,nstep):
     binmids[i] = (logbins[i]+logbins[i+1])/2.
 
-x_rand = lbox * np.random.random(len(pos)*6)
-y_rand = lbox * np.random.random(len(pos)*6)
-z_rand = lbox * np.random.random(len(pos)*6)
+x_rand = lbox * np.random.random(len(pos)*nrand)
+y_rand = lbox * np.random.random(len(pos)*nrand)
+z_rand = lbox * np.random.random(len(pos)*nrand)
 randpos = np.vstack((x_rand,y_rand,z_rand)).T
 
 xi, cov = mo.tpcf_jackknife(pos, randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
@@ -231,9 +231,9 @@ low_cnfw_sort = cnfw_sort[0:lowlim]
 high_cnfw_sort = cnfw_sort[highlim:-1]
 lowpos = np.vstack((low_cnfw_sort['halo_x'], low_cnfw_sort['halo_y'], low_cnfw_sort['halo_z'])).T
 highpos = np.vstack((high_cnfw_sort['halo_x'], high_cnfw_sort['halo_y'], high_cnfw_sort['halo_z'])).T
-x_rand = np.random.uniform(0, lbox, len(lowpos)*200)
-y_rand = np.random.uniform(0, lbox, len(lowpos)*200)
-z_rand = np.random.uniform(0, lbox, len(lowpos)*200)
+x_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
+y_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
+z_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 randpos = np.vstack((x_rand,y_rand,z_rand)).T
 xi_cnfw_low, cov_cnfw_low = mo.tpcf_jackknife(lowpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
 xi_cnfw_high, cov_cnfw_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
@@ -245,9 +245,9 @@ low_spin_sort = spin_sort[0:lowlim]
 high_spin_sort = spin_sort[highlim:-1]
 lowpos = np.vstack((low_spin_sort['halo_x'], low_spin_sort['halo_y'], low_spin_sort['halo_z'])).T
 highpos = np.vstack((high_spin_sort['halo_x'], high_spin_sort['halo_y'], high_spin_sort['halo_z'])).T
-x_rand = np.random.uniform(0, lbox, len(lowpos)*200)
-y_rand = np.random.uniform(0, lbox, len(lowpos)*200)
-z_rand = np.random.uniform(0, lbox, len(lowpos)*200)
+x_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
+y_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
+z_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 randpos = np.vstack((x_rand,y_rand,z_rand)).T
 xi_spin_low, cov_spin_low = mo.tpcf_jackknife(lowpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
 xi_spin_high, cov_spin_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
@@ -259,9 +259,9 @@ low_ctoa_sort = ctoa_sort[0:lowlim]
 high_ctoa_sort = ctoa_sort[highlim:-1]
 lowpos = np.vstack((low_ctoa_sort['halo_x'], low_ctoa_sort['halo_y'], low_ctoa_sort['halo_z'])).T
 highpos = np.vstack((high_ctoa_sort['halo_x'], high_ctoa_sort['halo_y'], high_ctoa_sort['halo_z'])).T
-x_rand = np.random.uniform(0, lbox, len(lowpos)*200)
-y_rand = np.random.uniform(0, lbox, len(lowpos)*200)
-z_rand = np.random.uniform(0, lbox, len(lowpos)*200)
+x_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
+y_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
+z_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 randpos = np.vstack((x_rand,y_rand,z_rand)).T
 xi_ctoa_low, cov_ctoa_low = mo.tpcf_jackknife(lowpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
 xi_ctoa_high, cov_ctoa_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
@@ -315,9 +315,9 @@ binmids = np.zeros(nstep)
 for i in range(0,nstep):
     binmids[i] = (logbins[i]+logbins[i+1])/2.
 
-x_rand = np.random.uniform(0, lbox, len(pos)*200)
-y_rand = np.random.uniform(0, lbox, len(pos)*200)
-z_rand = np.random.uniform(0, lbox, len(pos)*200)
+x_rand = np.random.uniform(0, lbox, len(pos)*nrand)
+y_rand = np.random.uniform(0, lbox, len(pos)*nrand)
+z_rand = np.random.uniform(0, lbox, len(pos)*nrand)
 randpos = np.vstack((x_rand,y_rand,z_rand)).T
 
 xi, cov = mo.tpcf_jackknife(pos, randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
@@ -410,9 +410,9 @@ low_cnfw_sort = cnfw_sort[0:lowlim]
 high_cnfw_sort = cnfw_sort[highlim:-1]
 lowpos = np.vstack((low_cnfw_sort['halo_x'], low_cnfw_sort['halo_y'], low_cnfw_sort['halo_z'])).T
 highpos = np.vstack((high_cnfw_sort['halo_x'], high_cnfw_sort['halo_y'], high_cnfw_sort['halo_z'])).T
-x_rand = np.random.uniform(0, lbox, len(lowpos)*200)
-y_rand = np.random.uniform(0, lbox, len(lowpos)*200)
-z_rand = np.random.uniform(0, lbox, len(lowpos)*200)
+x_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
+y_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
+z_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 randpos = np.vstack((x_rand,y_rand,z_rand)).T
 xi_cnfw_low, cov_cnfw_low = mo.tpcf_jackknife(lowpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
 xi_cnfw_high, cov_cnfw_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
@@ -424,9 +424,9 @@ low_spin_sort = spin_sort[0:lowlim]
 high_spin_sort = spin_sort[highlim:-1]
 lowpos = np.vstack((low_spin_sort['halo_x'], low_spin_sort['halo_y'], low_spin_sort['halo_z'])).T
 highpos = np.vstack((high_spin_sort['halo_x'], high_spin_sort['halo_y'], high_spin_sort['halo_z'])).T
-x_rand = np.random.uniform(0, lbox, len(lowpos)*200)
-y_rand = np.random.uniform(0, lbox, len(lowpos)*200)
-z_rand = np.random.uniform(0, lbox, len(lowpos)*200)
+x_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
+y_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
+z_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 randpos = np.vstack((x_rand,y_rand,z_rand)).T
 xi_spin_low, cov_spin_low = mo.tpcf_jackknife(lowpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
 xi_spin_high, cov_spin_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
@@ -438,9 +438,9 @@ low_ctoa_sort = ctoa_sort[0:lowlim]
 high_ctoa_sort = ctoa_sort[highlim:-1]
 lowpos = np.vstack((low_ctoa_sort['halo_x'], low_ctoa_sort['halo_y'], low_ctoa_sort['halo_z'])).T
 highpos = np.vstack((high_ctoa_sort['halo_x'], high_ctoa_sort['halo_y'], high_ctoa_sort['halo_z'])).T
-x_rand = np.random.uniform(0, lbox, len(lowpos)*200)
-y_rand = np.random.uniform(0, lbox, len(lowpos)*200)
-z_rand = np.random.uniform(0, lbox, len(lowpos)*200)
+x_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
+y_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
+z_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 randpos = np.vstack((x_rand,y_rand,z_rand)).T
 xi_ctoa_low, cov_ctoa_low = mo.tpcf_jackknife(lowpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
 xi_ctoa_high, cov_ctoa_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
