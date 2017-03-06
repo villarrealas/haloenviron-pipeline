@@ -7,25 +7,28 @@ import halotools.mock_observables as mo
 import halotools.sim_manager as sm
 import astropy.coordinates as coord
 
-lbox=500       # size of simulation box
-delta=200      # overdensity parameter
-mthresh=1e13  # mass threshold
-matchdelta=200  # best fit delta to remove environmental effects
-matchthresh=1e13 # best fit delta mass cut
+lbox=125       # size of simulation box
+delta=30     # overdensity parameter
+mthresh=2e11  # mass threshold
+matchdelta=10  # best fit delta to remove environmental effects
+matchthresh=4e11 # best fit delta mass cut
+fixbins = 20
+cores = 1
+vhost_min = 135.0   # minimum vmax for host in satellite counting
+vrat_frac = 0.3     # minimum vsub/vhost for satellite counting
+vsub_min = vhost_min * vrat_frac # minimum vsub for resolution
+
 
 # reading in the best match file to serve as the master catalog for creating a matched catalog that will
 # be analyzed down the road.
 fname_match = './l0'+str(lbox)+'_d'+str(matchdelta)+'b.catalog'
 outname_match = './l0'+str(lbox)+'_m'+str(mthresh).replace("+","") + '_d'+str(delta)+'b_match.dat'
 gnewton = 4.302e-6   # for quick conversion
-vhost_min = 240.0    # minimum vmax for host in satellite counting
-vrat_frac = 0.3      # minimum vsub/vhost for satellite counting
-vsub_min = vhost_min * vrat_frac # resulting minimum vsub for catalog pruning
 
 # file name settings based on above
 fname = './l0'+str(lbox)+'_d'+str(delta)+'b.catalog'
 outname = './l0'+str(lbox)+'_m'+str(mthresh).replace("+","") +'_d'+str(delta)+'b.dat'
-nrand = 100          # number of randomizations for error bars
+nrand = 200          # number of randomizations for error bars
 nstep = 10           # number of bins for correlation functions
 Nsub = np.array([2,2,2]) # number of octants for jackknife errors
 
@@ -57,7 +60,7 @@ c_master = coord.SkyCoord(x=hosts_data_master['halo_x'], y=hosts_data_master['ha
 c_matching = coord.SkyCoord(x=hosts_data['halo_x'], y=hosts_data['halo_y'], z=hosts_data['halo_z'],
                             unit='Mpc', frame='icrs', representation='cartesian')
 
-_, _, sep3d = coord.match_coordinates_3d(c_matching, c_master)
+matchid, _, sep3d = coord.match_coordinates_3d(c_matching, c_master)
 mask = (sep3d.value <= hosts_data['halo_rvir']*.001*.1)
 
 print 'Matches found: ', np.sum(mask)
@@ -93,32 +96,38 @@ for i in range(0, len(hosts_data)):
 hosts_data_alt =  append_fields(hosts_data, ('halo_cV', 'halo_cNFW', 'halo_satflag', 'halo_nsat'), (vratio_temp, cnfw_temp, nflagtemp, subcount))
 
 # making matched catalog with which to repeat literally everything below with.
-hosts_data_matched = hosts_data_alt[np.where(mask==True)]
+# line here is to rescale halo mass to matched catalog if desired
+#hosts_data_alt['halo_mass'] = hosts_data_master['halo_mass'][matchid]
 
+hosts_data_matched = hosts_data_alt[np.where(mask==True)]
 # now that we have data, we need to mass correct all of our marks
+
+# line here is to make it so original unmatched catalog is still using original halo mass, not rescaled.
+#hosts_data_alt['halo_mass'] = hosts_data['halo_mass']
+
 mass_sort = np.sort(hosts_data_alt, order='halo_mass')
 
 vratio_binned = stats.binned_statistic(np.log10(mass_sort['halo_mass']), 
                                        (mass_sort['halo_cV']),
-                                       statistic='mean', bins=10)
+                                       statistic='mean', bins=fixbins)
 vratio_fix = (mass_sort['halo_cV']) / vratio_binned.statistic[vratio_binned.binnumber-1]
 mass_sort['halo_cV'] = vratio_fix
 
 cnfw_binned = stats.binned_statistic(np.log10(mass_sort['halo_mass']), 
                                      (mass_sort['halo_cNFW']),
-                                     statistic = 'mean', bins=10)
+                                     statistic = 'mean', bins=fixbins)
 cnfw_fix = (mass_sort['halo_cNFW']) / cnfw_binned.statistic[cnfw_binned.binnumber-1]
 mass_sort['halo_cNFW'] = cnfw_fix
 
 shape_binned = stats.binned_statistic(np.log10(mass_sort['halo_mass']), 
                                       (mass_sort['halo_ctoa']),
-                                      statistic='mean', bins=10)
+                                      statistic='mean', bins=fixbins)
 shape_fix = (mass_sort['halo_ctoa']) / shape_binned.statistic[shape_binned.binnumber-1]
 mass_sort['halo_ctoa'] = shape_fix
 
 spin_binned = stats.binned_statistic(np.log10(mass_sort['halo_mass']), 
                                      (mass_sort['halo_spin']),
-                                     statistic='mean', bins=10)
+                                     statistic='mean', bins=fixbins)
 spin_fix = (mass_sort['halo_spin']) / spin_binned.statistic[spin_binned.binnumber-1]
 mass_sort['halo_spin'] = spin_fix
 
@@ -141,28 +150,32 @@ y_rand = lbox * np.random.random(len(pos)*nrand)
 z_rand = lbox * np.random.random(len(pos)*nrand)
 randpos = np.vstack((x_rand,y_rand,z_rand)).T
 
-xi, cov = mo.tpcf_jackknife(pos, randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
+print "Calculating correlation function."
+
+xi, cov = mo.tpcf_jackknife(pos, randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads=cores)
 error = np.sqrt(1./np.diag(cov))
 
+print "Calculating marked correlation functions."
+
 mcf_vratio = mo.marked_tpcf(pos, 10**logbins, marks1=mass_sort['halo_cV'], period=lbox,
-                            normalize_by='number_counts', weight_func_id=1, num_threads='max')
+                            normalize_by='number_counts', weight_func_id=1, num_threads=cores)
 mcfn_vratio = (mcf_vratio - np.mean(mass_sort['halo_cV'])**2)/(np.var(mass_sort['halo_cV']))
 
 mcf_cnfw = mo.marked_tpcf(pos, 10**logbins, marks1=mass_sort['halo_cNFW'], period=lbox,
-                          normalize_by='number_counts', weight_func_id=1, num_threads='max')
+                          normalize_by='number_counts', weight_func_id=1, num_threads=cores)
 mcfn_cnfw = (mcf_cnfw - np.mean(mass_sort['halo_cNFW'])**2)/(np.var(mass_sort['halo_cNFW']))
 
 mcf_ctoa = mo.marked_tpcf(pos, 10**logbins, marks1=mass_sort['halo_ctoa'], period=lbox,
-                          normalize_by='number_counts', weight_func_id=1, num_threads='max')
+                          normalize_by='number_counts', weight_func_id=1, num_threads=cores)
 mcfn_ctoa = (mcf_ctoa - np.mean(mass_sort['halo_ctoa'])**2)/(np.var(mass_sort['halo_ctoa']))
 
 mcf_spin = mo.marked_tpcf(pos, 10**logbins, marks1=mass_sort['halo_spin'], period=lbox,
-                          normalize_by='number_counts', weight_func_id=1, num_threads='max')
+                          normalize_by='number_counts', weight_func_id=1, num_threads=cores)
 mcfn_spin = (mcf_spin - np.mean(mass_sort['halo_spin'])**2)/(np.var(mass_sort['halo_spin']))
 
 mass_sort_satflag = mass_sort[np.where(mass_sort['halo_satflag']==1)]
 
-mcf_nsat = mo.marked_tpcf(pos[np.where(mass_sort['halo_satflag']==1)], 10**logbins, marks1=mass_sort_satflag['halo_nsat'], period=lbox, normalize_by='number_counts', weight_func_id=1, num_threads='max')
+mcf_nsat = mo.marked_tpcf(pos[np.where(mass_sort['halo_satflag']==1)], 10**logbins, marks1=mass_sort_satflag['halo_nsat'], period=lbox, normalize_by='number_counts', weight_func_id=1, num_threads=cores)
 
 mcfn_nsat = (mcf_nsat - np.mean(mass_sort_satflag['halo_nsat'])**2)/(np.var(mass_sort_satflag['halo_nsat']))
 
@@ -179,6 +192,8 @@ mcfn_spin_rand = np.zeros((nstep, nrand))
 mcf_nsat_rand = np.zeros((nstep, nrand))
 mcfn_nsat_rand = np.zeros((nstep, nrand))
 
+print "Calculating randomization errors."
+
 for i in range(0, nrand):
     randm_vratio = np.random.permutation(mass_sort['halo_cV'])
     randm_cnfw = np.random.permutation(mass_sort['halo_cNFW'])
@@ -187,18 +202,18 @@ for i in range(0, nrand):
     randm_nsat = np.random.permutation(mass_sort_satflag['halo_nsat'])
 
     mcf_vratio_rand[:,i] = mo.marked_tpcf(pos, 10**logbins, marks1=randm_vratio, period=lbox,
-                                      normalize_by='number_counts', weight_func_id=1, num_threads='max')
+                                      normalize_by='number_counts', weight_func_id=1, num_threads=cores)
     mcfn_vratio_rand[:,i] = (mcf_vratio_rand[:,i] - np.mean(randm_vratio)**2)/(np.var(randm_vratio))
     mcf_cnfw_rand[:,i] = mo.marked_tpcf(pos, 10**logbins, marks1=randm_cnfw, period=lbox,
-                                        normalize_by='number_counts', weight_func_id=1, num_threads='max')
+                                        normalize_by='number_counts', weight_func_id=1, num_threads=cores)
     mcfn_cnfw_rand[:,i] = (mcf_cnfw_rand[:,i] - np.mean(randm_cnfw)**2)/(np.var(randm_cnfw))
     mcf_ctoa_rand[:,i] = mo.marked_tpcf(pos, 10**logbins, marks1=randm_ctoa, period=lbox,
-                                        normalize_by='number_counts', weight_func_id=1, num_threads='max')
+                                        normalize_by='number_counts', weight_func_id=1, num_threads=cores)
     mcfn_ctoa_rand[:,i] = (mcf_ctoa_rand[:,i] - np.mean(randm_ctoa)**2)/(np.var(randm_ctoa))
     mcf_spin_rand[:,i] = mo.marked_tpcf(pos, 10**logbins, marks1=randm_spin, period=lbox,
-                                        normalize_by='number_counts', weight_func_id=1, num_threads='max')
+                                        normalize_by='number_counts', weight_func_id=1, num_threads=cores)
     mcfn_spin_rand[:,i] = (mcf_spin_rand[:,i] - np.mean(randm_spin)**2)/(np.var(randm_spin))
-    mcf_nsat_rand[:,i] = mo.marked_tpcf(pos[np.where(mass_sort['halo_satflag']==1)], 10**logbins, marks1=randm_nsat, period=lbox, normalize_by='number_counts', weight_func_id=1, num_threads='max')
+    mcf_nsat_rand[:,i] = mo.marked_tpcf(pos[np.where(mass_sort['halo_satflag']==1)], 10**logbins, marks1=randm_nsat, period=lbox, normalize_by='number_counts', weight_func_id=1, num_threads=cores)
     mcfn_nsat_rand[:,i] = (mcf_nsat_rand[:,i] - np.mean(randm_nsat)**2)/(np.var(randm_nsat))
 
 mcfn_vratio_min = np.zeros(nstep)
@@ -235,8 +250,8 @@ x_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 y_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 z_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 randpos = np.vstack((x_rand,y_rand,z_rand)).T
-xi_cnfw_low, cov_cnfw_low = mo.tpcf_jackknife(lowpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
-xi_cnfw_high, cov_cnfw_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
+xi_cnfw_low, cov_cnfw_low = mo.tpcf_jackknife(lowpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads=cores)
+xi_cnfw_high, cov_cnfw_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads=cores)
 error_cnfw_low = np.sqrt(1./np.diag(cov_cnfw_low))
 error_cnfw_high = np.sqrt(1./np.diag(cov_cnfw_high))
 
@@ -249,8 +264,8 @@ x_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 y_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 z_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 randpos = np.vstack((x_rand,y_rand,z_rand)).T
-xi_spin_low, cov_spin_low = mo.tpcf_jackknife(lowpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
-xi_spin_high, cov_spin_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
+xi_spin_low, cov_spin_low = mo.tpcf_jackknife(lowpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads=cores)
+xi_spin_high, cov_spin_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads=cores)
 error_spin_low = np.sqrt(1./np.diag(cov_spin_low))
 error_spin_high = np.sqrt(1./np.diag(cov_spin_high))
 
@@ -263,8 +278,8 @@ x_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 y_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 z_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 randpos = np.vstack((x_rand,y_rand,z_rand)).T
-xi_ctoa_low, cov_ctoa_low = mo.tpcf_jackknife(lowpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
-xi_ctoa_high, cov_ctoa_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
+xi_ctoa_low, cov_ctoa_low = mo.tpcf_jackknife(lowpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads=cores)
+xi_ctoa_high, cov_ctoa_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads=cores)
 error_ctoa_low = np.sqrt(1./np.diag(cov_ctoa_low))
 error_ctoa_high = np.sqrt(1./np.diag(cov_ctoa_high))
 
@@ -279,25 +294,25 @@ mass_sort = np.sort(hosts_data_matched, order='halo_mass')
 
 vratio_binned = stats.binned_statistic(np.log10(mass_sort['halo_mass']), 
                                        (mass_sort['halo_cV']),
-                                       statistic='mean', bins=10)
+                                       statistic='mean', bins=fixbins)
 vratio_fix = (mass_sort['halo_cV']) / vratio_binned.statistic[vratio_binned.binnumber-1]
 mass_sort['halo_cV'] = vratio_fix
 
 cnfw_binned = stats.binned_statistic(np.log10(mass_sort['halo_mass']), 
                                      (mass_sort['halo_cNFW']),
-                                     statistic = 'mean', bins=10)
+                                     statistic = 'mean', bins=fixbins)
 cnfw_fix = (mass_sort['halo_cNFW']) / cnfw_binned.statistic[cnfw_binned.binnumber-1]
 mass_sort['halo_cNFW'] = cnfw_fix
 
 shape_binned = stats.binned_statistic(np.log10(mass_sort['halo_mass']), 
                                       (mass_sort['halo_ctoa']),
-                                      statistic='mean', bins=10)
+                                      statistic='mean', bins=fixbins)
 shape_fix = (mass_sort['halo_ctoa']) / shape_binned.statistic[shape_binned.binnumber-1]
 mass_sort['halo_ctoa'] = shape_fix
 
 spin_binned = stats.binned_statistic(np.log10(mass_sort['halo_mass']), 
                                      (mass_sort['halo_spin']),
-                                     statistic='mean', bins=10)
+                                     statistic='mean', bins=fixbins)
 spin_fix = (mass_sort['halo_spin']) / spin_binned.statistic[spin_binned.binnumber-1]
 mass_sort['halo_spin'] = spin_fix
 
@@ -320,28 +335,32 @@ y_rand = np.random.uniform(0, lbox, len(pos)*nrand)
 z_rand = np.random.uniform(0, lbox, len(pos)*nrand)
 randpos = np.vstack((x_rand,y_rand,z_rand)).T
 
-xi, cov = mo.tpcf_jackknife(pos, randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
+print "Calculating matched correlation function."
+
+xi, cov = mo.tpcf_jackknife(pos, randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads=cores)
 error = np.sqrt(1./np.diag(cov))
 
+print "Calculating matched marked correlation function."
+
 mcf_vratio = mo.marked_tpcf(pos, 10**logbins, marks1=mass_sort['halo_cV'], period=lbox,
-                            normalize_by='number_counts', weight_func_id=1, num_threads='max')
+                            normalize_by='number_counts', weight_func_id=1, num_threads=cores)
 mcfn_vratio = (mcf_vratio - np.mean(mass_sort['halo_cV'])**2)/(np.var(mass_sort['halo_cV']))
 
 mcf_cnfw = mo.marked_tpcf(pos, 10**logbins, marks1=mass_sort['halo_cNFW'], period=lbox,
-                          normalize_by='number_counts', weight_func_id=1, num_threads='max')
+                          normalize_by='number_counts', weight_func_id=1, num_threads=cores)
 mcfn_cnfw = (mcf_cnfw - np.mean(mass_sort['halo_cNFW'])**2)/(np.var(mass_sort['halo_cNFW']))
 
 mcf_ctoa = mo.marked_tpcf(pos, 10**logbins, marks1=mass_sort['halo_ctoa'], period=lbox,
-                          normalize_by='number_counts', weight_func_id=1, num_threads='max')
+                          normalize_by='number_counts', weight_func_id=1, num_threads=cores)
 mcfn_ctoa = (mcf_ctoa - np.mean(mass_sort['halo_ctoa'])**2)/(np.var(mass_sort['halo_ctoa']))
 
 mcf_spin = mo.marked_tpcf(pos, 10**logbins, marks1=mass_sort['halo_spin'], period=lbox,
-                          normalize_by='number_counts', weight_func_id=1, num_threads='max')
+                          normalize_by='number_counts', weight_func_id=1, num_threads=cores)
 mcfn_spin = (mcf_spin - np.mean(mass_sort['halo_spin'])**2)/(np.var(mass_sort['halo_spin']))
 
 mass_sort_satflag = mass_sort[np.where(mass_sort['halo_satflag']==1)]
 
-mcf_nsat = mo.marked_tpcf(pos[np.where(mass_sort['halo_satflag']==1)], 10**logbins, marks1=mass_sort_satflag['halo_nsat'], period=lbox, normalize_by='number_counts', weight_func_id=1, num_threads='max')
+mcf_nsat = mo.marked_tpcf(pos[np.where(mass_sort['halo_satflag']==1)], 10**logbins, marks1=mass_sort_satflag['halo_nsat'], period=lbox, normalize_by='number_counts', weight_func_id=1, num_threads=cores)
 
 mcfn_nsat = (mcf_nsat - np.mean(mass_sort_satflag['halo_nsat'])**2)/(np.var(mass_sort_satflag['halo_nsat']))
 
@@ -358,6 +377,8 @@ mcfn_spin_rand = np.zeros((nstep, nrand))
 mcf_nsat_rand = np.zeros((nstep, nrand))
 mcfn_nsat_rand = np.zeros((nstep, nrand))
 
+print "Calculating matched randomization errors."
+
 for i in range(0, nrand):
     randm_vratio = np.random.permutation(mass_sort['halo_cV'])
     randm_cnfw = np.random.permutation(mass_sort['halo_cNFW'])
@@ -366,18 +387,18 @@ for i in range(0, nrand):
     randm_nsat = np.random.permutation(mass_sort_satflag['halo_nsat'])
 
     mcf_vratio_rand[:,i] = mo.marked_tpcf(pos, 10**logbins, marks1=randm_vratio, period=lbox,
-                                      normalize_by='number_counts', weight_func_id=1, num_threads='max')
+                                      normalize_by='number_counts', weight_func_id=1, num_threads=cores)
     mcfn_vratio_rand[:,i] = (mcf_vratio_rand[:,i] - np.mean(randm_vratio)**2)/(np.var(randm_vratio))
     mcf_cnfw_rand[:,i] = mo.marked_tpcf(pos, 10**logbins, marks1=randm_cnfw, period=lbox,
-                                        normalize_by='number_counts', weight_func_id=1, num_threads='max')
+                                        normalize_by='number_counts', weight_func_id=1, num_threads=cores)
     mcfn_cnfw_rand[:,i] = (mcf_cnfw_rand[:,i] - np.mean(randm_cnfw)**2)/(np.var(randm_cnfw))
     mcf_ctoa_rand[:,i] = mo.marked_tpcf(pos, 10**logbins, marks1=randm_ctoa, period=lbox,
-                                        normalize_by='number_counts', weight_func_id=1, num_threads='max')
+                                        normalize_by='number_counts', weight_func_id=1, num_threads=cores)
     mcfn_ctoa_rand[:,i] = (mcf_ctoa_rand[:,i] - np.mean(randm_ctoa)**2)/(np.var(randm_ctoa))
     mcf_spin_rand[:,i] = mo.marked_tpcf(pos, 10**logbins, marks1=randm_spin, period=lbox,
-                                        normalize_by='number_counts', weight_func_id=1, num_threads='max')
+                                        normalize_by='number_counts', weight_func_id=1, num_threads=cores)
     mcfn_spin_rand[:,i] = (mcf_spin_rand[:,i] - np.mean(randm_spin)**2)/(np.var(randm_spin))
-    mcf_nsat_rand[:,i] = mo.marked_tpcf(pos[np.where(mass_sort['halo_satflag']==1)], 10**logbins, marks1=randm_nsat, period=lbox, normalize_by='number_counts', weight_func_id=1, num_threads='max')
+    mcf_nsat_rand[:,i] = mo.marked_tpcf(pos[np.where(mass_sort['halo_satflag']==1)], 10**logbins, marks1=randm_nsat, period=lbox, normalize_by='number_counts', weight_func_id=1, num_threads=cores)
     mcfn_nsat_rand[:,i] = (mcf_nsat_rand[:,i] - np.mean(randm_nsat)**2)/(np.var(randm_nsat))
 
 mcfn_vratio_min = np.zeros(nstep)
@@ -414,8 +435,8 @@ x_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 y_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 z_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 randpos = np.vstack((x_rand,y_rand,z_rand)).T
-xi_cnfw_low, cov_cnfw_low = mo.tpcf_jackknife(lowpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
-xi_cnfw_high, cov_cnfw_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
+xi_cnfw_low, cov_cnfw_low = mo.tpcf_jackknife(lowpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads=cores)
+xi_cnfw_high, cov_cnfw_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads=cores)
 error_cnfw_low = np.sqrt(1./np.diag(cov_cnfw_low))
 error_cnfw_high = np.sqrt(1./np.diag(cov_cnfw_high))
 
@@ -428,8 +449,8 @@ x_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 y_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 z_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 randpos = np.vstack((x_rand,y_rand,z_rand)).T
-xi_spin_low, cov_spin_low = mo.tpcf_jackknife(lowpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
-xi_spin_high, cov_spin_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
+xi_spin_low, cov_spin_low = mo.tpcf_jackknife(lowpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads=cores)
+xi_spin_high, cov_spin_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads=cores)
 error_spin_low = np.sqrt(1./np.diag(cov_spin_low))
 error_spin_high = np.sqrt(1./np.diag(cov_spin_high))
 
@@ -442,8 +463,8 @@ x_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 y_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 z_rand = np.random.uniform(0, lbox, len(lowpos)*nrand)
 randpos = np.vstack((x_rand,y_rand,z_rand)).T
-xi_ctoa_low, cov_ctoa_low = mo.tpcf_jackknife(lowpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
-xi_ctoa_high, cov_ctoa_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads='max')
+xi_ctoa_low, cov_ctoa_low = mo.tpcf_jackknife(lowpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads=cores)
+xi_ctoa_high, cov_ctoa_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=10**logbins, Nsub=Nsub, period=lbox, num_threads=cores)
 error_ctoa_low = np.sqrt(1./np.diag(cov_ctoa_low))
 error_ctoa_high = np.sqrt(1./np.diag(cov_ctoa_high))
 
@@ -452,3 +473,4 @@ np.savetxt(outname_match, np.transpose([10**binmids, xi, error, xi_cnfw_low, err
                                                   mcfn_ctoa_min, mcfn_ctoa_max, mcfn_spin, mcfn_spin_min, mcfn_spin_max, mcfn_nsat, mcfn_nsat_min, mcfn_nsat_max]), 
 header='r xi +err xi_cnfw_low +err xi_cnfw_high +err xi_ctoa_low +err xi_ctoa_high +err xi_spin_low +err xi_spin_high + err mcfn_vratio +low +high mcfn_cnfw +low +high mcf_ctoa +low +high mcf_spin +low +high mcf_nsat +low +high')
 
+print "Run complete."
