@@ -9,9 +9,9 @@ import astropy.coordinates as coord
 
 lbox=250       # size of simulation box
 delta=200     # overdensity parameter
-mthresh=7e11  # mass threshold
+mthresh=1.5e12  # mass threshold
 matchdelta=60  # best fit delta to remove environmental effects
-matchthresh=1e12 # best fit delta mass cut
+matchthresh=1.5e12 # best fit delta mass cut
 fixbins = 20
 cores = 1
 vhost_min = 235.0   # minimum vmax for host in satellite counting
@@ -129,37 +129,72 @@ hosts_data_matched = np.ma.concatenate((hosts_data_alt[np.where(mask==True)],sub
 
 # line here is to make it so original unmatched catalog is still using original halo mass, not rescaled.
 #hosts_data_alt['halo_mass'] = hosts_data['halo_mass']
+# mass_sort = np.sort(hosts_data_alt, order='halo_mass')
+# first we want to determine our mass binning
 
-mass_sort = np.sort(hosts_data_alt, order='halo_mass')
+X1 = np.log10(hosts_data_alt['halo_mass'])
+bins = np.linspace(X1.min(),X1.max(), fixbins)
+idx = np.digitize(X1,bins)
+for i in range(1, fixbins+1):
+   ranks = np.zeros(len(hosts_data_alt[idx==i]))
+   ranks = stats.rankdata(hosts_data_alt['halo_cV'][idx==i],'average')
+   rank_fix = ranks / len(ranks)
+   hosts_data_alt['halo_cV'][idx==i]=rank_fix
 
-vratio_binned = stats.binned_statistic(np.log10(mass_sort['halo_mass']), 
-                                       (mass_sort['halo_cV']),
-                                       statistic='mean', bins=fixbins)
-vratio_fix = (mass_sort['halo_cV']) / vratio_binned.statistic[vratio_binned.binnumber-1]
-mass_sort['halo_cV'] = vratio_fix
+   ranks = stats.rankdata(hosts_data_alt['halo_cNFW'][idx==i],'average')
+   rank_fix = ranks / len(ranks)
+   hosts_data_alt['halo_cNFW'][idx==i]=rank_fix
 
-cnfw_binned = stats.binned_statistic(np.log10(mass_sort['halo_mass']), 
-                                     (mass_sort['halo_cNFW']),
-                                     statistic = 'mean', bins=fixbins)
-cnfw_fix = (mass_sort['halo_cNFW']) / cnfw_binned.statistic[cnfw_binned.binnumber-1]
-mass_sort['halo_cNFW'] = cnfw_fix
+   ranks = stats.rankdata(hosts_data_alt['halo_ctoa'][idx==i],'average')
+   rank_fix = ranks / len(ranks)
+   hosts_data_alt['halo_ctoa'][idx==i]=rank_fix
 
-shape_binned = stats.binned_statistic(np.log10(mass_sort['halo_mass']), 
-                                      (mass_sort['halo_ctoa']),
-                                      statistic='mean', bins=fixbins)
-shape_fix = (mass_sort['halo_ctoa']) / shape_binned.statistic[shape_binned.binnumber-1]
-mass_sort['halo_ctoa'] = shape_fix
+X1 = np.log10(hosts_data_alt['halo_mass'][np.where(hosts_data_alt['halo_satflag']==1)])
+bins = np.linspace(X1.min(),X1.max(), fixbins)
+idx = np.digitize(X1,bins)
 
-spin_binned = stats.binned_statistic(np.log10(mass_sort['halo_mass']), 
-                                     (mass_sort['halo_spin']),
-                                     statistic='mean', bins=fixbins)
-spin_fix = (mass_sort['halo_spin']) / spin_binned.statistic[spin_binned.binnumber-1]
-mass_sort['halo_spin'] = spin_fix
+for i in range(1, fixbins+1):
+   ranks = np.zeros(len(hosts_data_alt[np.where(hosts_data_alt['halo_satflag']==1)][idx==i]))
+   ranks = stats.rankdata(hosts_data_alt[np.where(hosts_data_alt['halo_satflag']==1)][idx==i])
+   rank_fix = ranks / len(ranks)
+   hosts_data_alt['halo_satflag'][np.where(hosts_data_alt['halo_satflag']==1)][idx==i]=rank_fix
+
+
+#################################
+# old fixing method for posterity
+#################################
+#vratio_binned = stats.binned_statistic(np.log10(mass_sort['halo_mass']), 
+#                                       (mass_sort['halo_cV']),
+#                                       statistic='mean', bins=fixbins)
+#
+#
+#vratio_fix = (mass_sort['halo_cV']) / vratio_binned.statistic[vratio_binned.binnumber-1]
+#mass_sort['halo_cV'] = vratio_fix
+#
+#cnfw_binned = stats.binned_statistic(np.log10(mass_sort['halo_mass']), 
+#                                     (mass_sort['halo_cNFW']),
+#                                     statistic = 'mean', bins=fixbins)
+#cnfw_fix = (mass_sort['halo_cNFW']) / cnfw_binned.statistic[cnfw_binned.binnumber-1]
+#mass_sort['halo_cNFW'] = cnfw_fix
+#
+#shape_binned = stats.binned_statistic(np.log10(mass_sort['halo_mass']), 
+#                                      (mass_sort['halo_ctoa']),
+#                                      statistic='mean', bins=fixbins)
+#shape_fix = (mass_sort['halo_ctoa']) / shape_binned.statistic[shape_binned.binnumber-1]
+#mass_sort['halo_ctoa'] = shape_fix
+#
+#spin_binned = stats.binned_statistic(np.log10(mass_sort['halo_mass']), 
+#                                     (mass_sort['halo_spin']),
+#                                     statistic='mean', bins=fixbins)
+#spin_fix = (mass_sort['halo_spin']) / spin_binned.statistic[spin_binned.binnumber-1]
+#mass_sort['halo_spin'] = spin_fix
+#
+####################
 
 # now all our marks have been fixed. First let's run through the marked correlation functions
 # then we can take various correlation function comparisons
 
-pos = np.vstack((mass_sort['halo_x'], mass_sort['halo_y'], mass_sort['halo_z'])).T
+pos = np.vstack((hosts_data_alt['halo_x'], hosts_data_alt['halo_y'], hosts_data_alt['halo_z'])).T
 
 minlog = np.log10(3.0)
 maxlog = np.log10(20.0)
@@ -182,89 +217,125 @@ error = np.sqrt(1./np.diag(cov))
 
 print "Calculating marked correlation functions."
 
-mcf_vratio = mo.marked_tpcf(pos, 10**logbins, marks1=mass_sort['halo_cV'], period=lbox,
+mcf_vratio = mo.marked_tpcf(pos, 10**logbins, marks1=hosts_data_alt['halo_cV'], period=lbox,
                             normalize_by='number_counts', weight_func_id=1, num_threads=cores)
-mcfn_vratio = (mcf_vratio - np.mean(mass_sort['halo_cV'])**2)/(np.var(mass_sort['halo_cV']))
+mcfn_vratio = (mcf_vratio - np.mean(hosts_data_alt['halo_cV'])**2)/(np.var(hosts_data_alt['halo_cV']))
 
-mcf_cnfw = mo.marked_tpcf(pos, 10**logbins, marks1=mass_sort['halo_cNFW'], period=lbox,
+mcf_cnfw = mo.marked_tpcf(pos, 10**logbins, marks1=hosts_data_alt['halo_cNFW'], period=lbox,
                           normalize_by='number_counts', weight_func_id=1, num_threads=cores)
-mcfn_cnfw = (mcf_cnfw - np.mean(mass_sort['halo_cNFW'])**2)/(np.var(mass_sort['halo_cNFW']))
+mcfn_cnfw = (mcf_cnfw - np.mean(hosts_data_alt['halo_cNFW'])**2)/(np.var(hosts_data_alt['halo_cNFW']))
 
-mcf_ctoa = mo.marked_tpcf(pos, 10**logbins, marks1=mass_sort['halo_ctoa'], period=lbox,
+mcf_ctoa = mo.marked_tpcf(pos, 10**logbins, marks1=hosts_data_alt['halo_ctoa'], period=lbox,
                           normalize_by='number_counts', weight_func_id=1, num_threads=cores)
-mcfn_ctoa = (mcf_ctoa - np.mean(mass_sort['halo_ctoa'])**2)/(np.var(mass_sort['halo_ctoa']))
+mcfn_ctoa = (mcf_ctoa - np.mean(hosts_data_alt['halo_ctoa'])**2)/(np.var(hosts_data_alt['halo_ctoa']))
 
-mcf_spin = mo.marked_tpcf(pos, 10**logbins, marks1=mass_sort['halo_spin'], period=lbox,
+mcf_spin = mo.marked_tpcf(pos, 10**logbins, marks1=hosts_data_alt['halo_spin'], period=lbox,
                           normalize_by='number_counts', weight_func_id=1, num_threads=cores)
-mcfn_spin = (mcf_spin - np.mean(mass_sort['halo_spin'])**2)/(np.var(mass_sort['halo_spin']))
+mcfn_spin = (mcf_spin - np.mean(hosts_data_alt['halo_spin'])**2)/(np.var(hosts_data_alt['halo_spin']))
 
-mass_sort_satflag = mass_sort[np.where(mass_sort['halo_satflag']==1)]
+hosts_data_satflag = hosts_data_alt[np.where(hosts_data_alt['halo_satflag']==1)]
 
-mcf_nsat = mo.marked_tpcf(pos[np.where(mass_sort['halo_satflag']==1)], 10**logbins, marks1=mass_sort_satflag['halo_nsat'], period=lbox, normalize_by='number_counts', weight_func_id=1, num_threads=cores)
+mcf_nsat = mo.marked_tpcf(pos[np.where(hosts_data_alt['halo_satflag']==1)], 10**logbins, marks1=hosts_data_satflag['halo_nsat'], period=lbox, normalize_by='number_counts', weight_func_id=1, num_threads=cores)
 
-mcfn_nsat = (mcf_nsat - np.mean(mass_sort_satflag['halo_nsat'])**2)/(np.var(mass_sort_satflag['halo_nsat']))
+mcfn_nsat = (mcf_nsat - np.mean(hosts_data_satflag['halo_nsat'])**2)/(np.var(hosts_data_satflag['halo_nsat']))
 
+#########################
+# NEW ERROR CALCULATION #
+#########################
+# now error depends solely on the number of pairs in a given bin. Thankfully - we can get this number.
+num_in_bin = npairs_3d(pos, pos, rbins=10**logbins, period=lbox, num_threads=cores) / 2.
+num_in_bin_sat = npairs_3d(pos[np.where(hosts_data_alt['halo_satflag']==1)],pos[np.where(hosts_data_alt['halo_satflag']==1)],
+                           period=lbox, numthreads=cores) / 2.
+
+print num_in_bin
+print num_in_bin_sat
+
+# errors have N dependence due to 
+
+uppererr = np.zeros(len(num_in_bin))
+lowererr = np.zeros(len(num_in_bin))
+sampall = np.random.uniform(0,1,(len(hosts_data_alt),nrand))
+for i in range(0,len(num_in_bin)):
+   sampsquare = np.random.uniform(0,1,(num_in_bin[i],nrand))*np.random.uniform(0,1,(num_in_bin[i],nrand))
+   value = (np.mean(sampsquare,axis=0)-np.mean(sampall)**2)/np.var(sampall)
+   uppererr[i] = np.percentile(value,98)
+   lowererr[i] = np.percentile(value, 2)
+
+uppererr_sat = np.zeros(len(num_in_bin))
+lowererr_sat = np.zeros(len(num_in_bin))
+sampall_sat = np.random.uniform(0,1,(len(hosts_data_alt[np.where('halo_satflag']==1),nrand)))
+for i in range(0,len(num_in_bin_sat)):
+   sampsquare = np.random.uniform(0,1,(num_in_bin_sat[i],nrand))*np.random.uniform(0,1,(num_in_bin_sat[i],nrand))
+   value = (np.mean(sampsquare,axis=0)-np.mean(sampall_sat)**2)/np.var(sampall_sat)
+   uppererr_sat[i] = np.percentile(value,98)
+   lowererr_sat[i] = np.percentile(value, 2)
+
+##########################
+## OLD ERROR CALCULATION #
+##########################
 # how we'll need to shuffle the marks N times, run the calculation N times,
 # and determine the min and max range of the mark calculation. So:
-mcf_vratio_rand = np.zeros((nstep, nrand))
-mcfn_vratio_rand = np.zeros((nstep, nrand))
-mcf_cnfw_rand = np.zeros((nstep, nrand))
-mcfn_cnfw_rand = np.zeros((nstep, nrand))
-mcf_ctoa_rand = np.zeros((nstep, nrand))
-mcfn_ctoa_rand = np.zeros((nstep, nrand))
-mcf_spin_rand = np.zeros((nstep, nrand))
-mcfn_spin_rand = np.zeros((nstep, nrand))
-mcf_nsat_rand = np.zeros((nstep, nrand))
-mcfn_nsat_rand = np.zeros((nstep, nrand))
+#mcf_vratio_rand = np.zeros((nstep, nrand))
+#mcfn_vratio_rand = np.zeros((nstep, nrand))
+#mcf_cnfw_rand = np.zeros((nstep, nrand))
+#mcfn_cnfw_rand = np.zeros((nstep, nrand))
+#mcf_ctoa_rand = np.zeros((nstep, nrand))
+#mcfn_ctoa_rand = np.zeros((nstep, nrand))
+#mcf_spin_rand = np.zeros((nstep, nrand))
+#mcfn_spin_rand = np.zeros((nstep, nrand))
+#mcf_nsat_rand = np.zeros((nstep, nrand))
+#mcfn_nsat_rand = np.zeros((nstep, nrand))
+#
+#print "Calculating randomization errors."
+#
+#for i in range(0, nrand):
+#    randm_vratio = np.random.permutation(mass_sort['halo_cV'])
+#    randm_cnfw = np.random.permutation(mass_sort['halo_cNFW'])
+#    randm_ctoa = np.random.permutation(mass_sort['halo_ctoa'])
+#    randm_spin = np.random.permutation(mass_sort['halo_spin'])
+#    randm_nsat = np.random.permutation(mass_sort_satflag['halo_nsat'])
+#
+#    mcf_vratio_rand[:,i] = mo.marked_tpcf(pos, 10**logbins, marks1=randm_vratio, period=lbox,
+#                                      normalize_by='number_counts', weight_func_id=1, num_threads=cores)
+#    mcfn_vratio_rand[:,i] = (mcf_vratio_rand[:,i] - np.mean(randm_vratio)**2)/(np.var(randm_vratio))
+#    mcf_cnfw_rand[:,i] = mo.marked_tpcf(pos, 10**logbins, marks1=randm_cnfw, period=lbox,
+#                                        normalize_by='number_counts', weight_func_id=1, num_threads=cores)
+#    mcfn_cnfw_rand[:,i] = (mcf_cnfw_rand[:,i] - np.mean(randm_cnfw)**2)/(np.var(randm_cnfw))
+#    mcf_ctoa_rand[:,i] = mo.marked_tpcf(pos, 10**logbins, marks1=randm_ctoa, period=lbox,
+#                                        normalize_by='number_counts', weight_func_id=1, num_threads=cores)
+#    mcfn_ctoa_rand[:,i] = (mcf_ctoa_rand[:,i] - np.mean(randm_ctoa)**2)/(np.var(randm_ctoa))
+#    mcf_spin_rand[:,i] = mo.marked_tpcf(pos, 10**logbins, marks1=randm_spin, period=lbox,
+#                                        normalize_by='number_counts', weight_func_id=1, num_threads=cores)
+#    mcfn_spin_rand[:,i] = (mcf_spin_rand[:,i] - np.mean(randm_spin)**2)/(np.var(randm_spin))
+#    mcf_nsat_rand[:,i] = mo.marked_tpcf(pos[np.where(mass_sort['halo_satflag']==1)], 10**logbins, marks1=randm_nsat, period=lbox, normalize_by='number_counts', weight_func_id=1, num_threads=cores)
+#    mcfn_nsat_rand[:,i] = (mcf_nsat_rand[:,i] - np.mean(randm_nsat)**2)/(np.var(randm_nsat))
+#
+#mcfn_vratio_min = np.zeros(nstep)
+#mcfn_vratio_max = np.zeros(nstep)
+#mcfn_cnfw_min = np.zeros(nstep)
+#mcfn_cnfw_max = np.zeros(nstep)
+#mcfn_ctoa_min = np.zeros(nstep)
+#mcfn_ctoa_max = np.zeros(nstep)
+#mcfn_spin_min = np.zeros(nstep)
+#mcfn_spin_max = np.zeros(nstep)
+#mcfn_nsat_min = np.zeros(nstep)
+#mcfn_nsat_max = np.zeros(nstep)
+#
+#for i in range(0, nstep):
+#    mcfn_vratio_min[i] = np.percentile(mcfn_vratio_rand[i,:],2, interpolation='nearest')
+#    mcfn_vratio_max[i] = np.percentile(mcfn_vratio_rand[i,:],98,interpolation='nearest')
+#    mcfn_cnfw_min[i] = np.percentile(mcfn_cnfw_rand[i,:],2, interpolation='nearest')
+#    mcfn_cnfw_max[i] = np.percentile(mcfn_cnfw_rand[i,:],98, interpolation='nearest')
+#    mcfn_ctoa_min[i] = np.percentile(mcfn_ctoa_rand[i,:],2, interpolation='nearest')
+#    mcfn_ctoa_max[i] = np.percentile(mcfn_ctoa_rand[i,:],98, interpolation='nearest')
+#    mcfn_spin_min[i] = np.percentile(mcfn_spin_rand[i,:],2, interpolation='nearest')
+#    mcfn_spin_max[i] = np.percentile(mcfn_spin_rand[i,:],98, interpolation='nearest')
+#    mcfn_nsat_min[i] = np.percentile(mcfn_nsat_rand[i,:],2, interpolation='nearest')
+#    mcfn_nsat_max[i] = np.percentile(mcfn_nsat_rand[i,:],98, interpolation='nearest')
+#################################################
 
-print "Calculating randomization errors."
 
-for i in range(0, nrand):
-    randm_vratio = np.random.permutation(mass_sort['halo_cV'])
-    randm_cnfw = np.random.permutation(mass_sort['halo_cNFW'])
-    randm_ctoa = np.random.permutation(mass_sort['halo_ctoa'])
-    randm_spin = np.random.permutation(mass_sort['halo_spin'])
-    randm_nsat = np.random.permutation(mass_sort_satflag['halo_nsat'])
-
-    mcf_vratio_rand[:,i] = mo.marked_tpcf(pos, 10**logbins, marks1=randm_vratio, period=lbox,
-                                      normalize_by='number_counts', weight_func_id=1, num_threads=cores)
-    mcfn_vratio_rand[:,i] = (mcf_vratio_rand[:,i] - np.mean(randm_vratio)**2)/(np.var(randm_vratio))
-    mcf_cnfw_rand[:,i] = mo.marked_tpcf(pos, 10**logbins, marks1=randm_cnfw, period=lbox,
-                                        normalize_by='number_counts', weight_func_id=1, num_threads=cores)
-    mcfn_cnfw_rand[:,i] = (mcf_cnfw_rand[:,i] - np.mean(randm_cnfw)**2)/(np.var(randm_cnfw))
-    mcf_ctoa_rand[:,i] = mo.marked_tpcf(pos, 10**logbins, marks1=randm_ctoa, period=lbox,
-                                        normalize_by='number_counts', weight_func_id=1, num_threads=cores)
-    mcfn_ctoa_rand[:,i] = (mcf_ctoa_rand[:,i] - np.mean(randm_ctoa)**2)/(np.var(randm_ctoa))
-    mcf_spin_rand[:,i] = mo.marked_tpcf(pos, 10**logbins, marks1=randm_spin, period=lbox,
-                                        normalize_by='number_counts', weight_func_id=1, num_threads=cores)
-    mcfn_spin_rand[:,i] = (mcf_spin_rand[:,i] - np.mean(randm_spin)**2)/(np.var(randm_spin))
-    mcf_nsat_rand[:,i] = mo.marked_tpcf(pos[np.where(mass_sort['halo_satflag']==1)], 10**logbins, marks1=randm_nsat, period=lbox, normalize_by='number_counts', weight_func_id=1, num_threads=cores)
-    mcfn_nsat_rand[:,i] = (mcf_nsat_rand[:,i] - np.mean(randm_nsat)**2)/(np.var(randm_nsat))
-
-mcfn_vratio_min = np.zeros(nstep)
-mcfn_vratio_max = np.zeros(nstep)
-mcfn_cnfw_min = np.zeros(nstep)
-mcfn_cnfw_max = np.zeros(nstep)
-mcfn_ctoa_min = np.zeros(nstep)
-mcfn_ctoa_max = np.zeros(nstep)
-mcfn_spin_min = np.zeros(nstep)
-mcfn_spin_max = np.zeros(nstep)
-mcfn_nsat_min = np.zeros(nstep)
-mcfn_nsat_max = np.zeros(nstep)
-
-for i in range(0, nstep):
-    mcfn_vratio_min[i] = np.percentile(mcfn_vratio_rand[i,:],2, interpolation='nearest')
-    mcfn_vratio_max[i] = np.percentile(mcfn_vratio_rand[i,:],98,interpolation='nearest')
-    mcfn_cnfw_min[i] = np.percentile(mcfn_cnfw_rand[i,:],2, interpolation='nearest')
-    mcfn_cnfw_max[i] = np.percentile(mcfn_cnfw_rand[i,:],98, interpolation='nearest')
-    mcfn_ctoa_min[i] = np.percentile(mcfn_ctoa_rand[i,:],2, interpolation='nearest')
-    mcfn_ctoa_max[i] = np.percentile(mcfn_ctoa_rand[i,:],98, interpolation='nearest')
-    mcfn_spin_min[i] = np.percentile(mcfn_spin_rand[i,:],2, interpolation='nearest')
-    mcfn_spin_max[i] = np.percentile(mcfn_spin_rand[i,:],98, interpolation='nearest')
-    mcfn_nsat_min[i] = np.percentile(mcfn_nsat_rand[i,:],2, interpolation='nearest')
-    mcfn_nsat_max[i] = np.percentile(mcfn_nsat_rand[i,:],98, interpolation='nearest')
-
-cnfw_sort = np.sort(mass_sort, order='halo_cNFW')
+cnfw_sort = np.sort(hosts_data_alt, order='halo_cNFW')
 lowlim=int(np.floor(.2*len(cnfw_sort)))
 highlim=int(np.floor(.8*len(cnfw_sort)))
 low_cnfw_sort = cnfw_sort[0:lowlim]
@@ -280,7 +351,7 @@ xi_cnfw_high, cov_cnfw_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=
 error_cnfw_low = np.sqrt(1./np.diag(cov_cnfw_low))
 error_cnfw_high = np.sqrt(1./np.diag(cov_cnfw_high))
 
-spin_sort = np.sort(mass_sort, order='halo_spin')
+spin_sort = np.sort(hosts_data_alt, order='halo_spin')
 low_spin_sort = spin_sort[0:lowlim]
 high_spin_sort = spin_sort[highlim:-1]
 lowpos = np.vstack((low_spin_sort['halo_x'], low_spin_sort['halo_y'], low_spin_sort['halo_z'])).T
@@ -294,7 +365,7 @@ xi_spin_high, cov_spin_high = mo.tpcf_jackknife(highpos, randoms=randpos, rbins=
 error_spin_low = np.sqrt(1./np.diag(cov_spin_low))
 error_spin_high = np.sqrt(1./np.diag(cov_spin_high))
 
-ctoa_sort = np.sort(mass_sort, order='halo_ctoa')
+ctoa_sort = np.sort(hosts_data_alt, order='halo_ctoa')
 low_ctoa_sort = ctoa_sort[0:lowlim]
 high_ctoa_sort = ctoa_sort[highlim:-1]
 lowpos = np.vstack((low_ctoa_sort['halo_x'], low_ctoa_sort['halo_y'], low_ctoa_sort['halo_z'])).T
