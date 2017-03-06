@@ -1,20 +1,20 @@
 # required imports for the function here
 import numpy as np
-from numpy.lib.recfunctions import append_fields
+from numpy.lib.recfunctions import append_fields, merge_arrays
 import matplotlib.pyplot as plt
 import scipy.stats as stats
 import halotools.mock_observables as mo
 import halotools.sim_manager as sm
 import astropy.coordinates as coord
 
-lbox=125       # size of simulation box
-delta=30     # overdensity parameter
-mthresh=2e11  # mass threshold
-matchdelta=10  # best fit delta to remove environmental effects
-matchthresh=4e11 # best fit delta mass cut
+lbox=250       # size of simulation box
+delta=200     # overdensity parameter
+mthresh=7e11  # mass threshold
+matchdelta=60  # best fit delta to remove environmental effects
+matchthresh=1e12 # best fit delta mass cut
 fixbins = 20
 cores = 1
-vhost_min = 135.0   # minimum vmax for host in satellite counting
+vhost_min = 235.0   # minimum vmax for host in satellite counting
 vrat_frac = 0.3     # minimum vsub/vhost for satellite counting
 vsub_min = vhost_min * vrat_frac # minimum vsub for resolution
 
@@ -59,11 +59,15 @@ c_master = coord.SkyCoord(x=hosts_data_master['halo_x'], y=hosts_data_master['ha
                          unit='Mpc', frame='icrs', representation='cartesian')
 c_matching = coord.SkyCoord(x=hosts_data['halo_x'], y=hosts_data['halo_y'], z=hosts_data['halo_z'],
                             unit='Mpc', frame='icrs', representation='cartesian')
+c_matching_sub = coord.SkyCoord(x=subs_data['halo_x'], y=subs_data['halo_y'], z=subs_data['halo_z'],
+                                unit='Mpc', frame='icrs', representation='cartesian')
 
 matchid, _, sep3d = coord.match_coordinates_3d(c_matching, c_master)
+matchid_sub, _, sep3d_sub = coord.match_coordinates_3d(c_matching_sub, c_master)
 mask = (sep3d.value <= hosts_data['halo_rvir']*.001*.1)
+mask_sub = (sep3d_sub.value <= subs_data['halo_rvir']*.001*.1)
 
-print 'Matches found: ', np.sum(mask)
+print 'Matches found: ', np.sum(mask)+np.sum(mask_sub)
 
 # let the calculation be done to add additional marks to the main catalog (and satellite number) and then
 # make a cut with only the matched galaxies. We won't do satellite numbers because it will likely
@@ -92,14 +96,35 @@ for i in range(0, len(hosts_data)):
             ratio = subs_cut[j]['halo_vmax']/hosts_data[i]['halo_vmax']
             if ratio > vrat_frac:
                subcount[i] = subcount[i] + 1
-         
+
+# same as the halo by halo above, but we are going to do the same work for subhalos that would be host halos in the matched catalog.
+vratio_temp_sub = subs_data['halo_vmax']/(np.sqrt(gnewton * subs_data['halo_mass']/subs_data['halo_rvir']))
+cnfw_temp_sub = subs_data['halo_rvir']/subs_data['halo_rs']
+nflagtemp_sub = np.zeros(len(subs_data))
+subcount_sub = np.zeros(len(subs_data))
+
+for i in range(0, len(subs_data)):
+   if subs_data[i]['halo_vmax'] > vhost_min:
+      nflagtemp_sub[i] = 1
+      subs_cut = subs_data[np.where(subs_data['halo_pid'] == subs_data[i]['halo_id'])]
+      for j in range(0, len(subs_cut)):
+         xdist = subs_cut[j]['halo_x'] - subs_data[i]['halo_x']
+         ydist = subs_cut[j]['halo_y'] - subs_data[i]['halo_y']
+         zdist = subs_cut[j]['halo_z'] - subs_data[i]['halo_z']
+         totdist = (np.sqrt(xdist**2 + ydist**2 + zdist**2))*0.001
+         if totdist < subs_data[i]['halo_rvir']:
+            ratio = subs_cut[j]['halo_vmax']/subs_data[i]['halo_vmax']
+            if ratio > vrat_frac:
+               subcount_sub[i] = subcount_sub[i] + 1
+
 hosts_data_alt =  append_fields(hosts_data, ('halo_cV', 'halo_cNFW', 'halo_satflag', 'halo_nsat'), (vratio_temp, cnfw_temp, nflagtemp, subcount))
+subs_data_alt = append_fields(subs_data, ('halo_cV', 'halo_cNFW', 'halo_satflag', 'halo_nsat'), (vratio_temp_sub, cnfw_temp_sub, nflagtemp_sub, subcount_sub))
 
 # making matched catalog with which to repeat literally everything below with.
 # line here is to rescale halo mass to matched catalog if desired
 #hosts_data_alt['halo_mass'] = hosts_data_master['halo_mass'][matchid]
 
-hosts_data_matched = hosts_data_alt[np.where(mask==True)]
+hosts_data_matched = np.ma.concatenate((hosts_data_alt[np.where(mask==True)],subs_data_alt[np.where(mask_sub==True)]))
 # now that we have data, we need to mass correct all of our marks
 
 # line here is to make it so original unmatched catalog is still using original halo mass, not rescaled.
